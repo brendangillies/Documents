@@ -1,0 +1,52 @@
+<div class="row row-1">
+	<%= render(:partial => '/project/banner') %>  
+</div>
+
+
+<div class = "row text-center row-3">
+
+  	<div class="col-md-3">
+	  	<%= render(:partial => '/project/sidenavigation') %>
+  	</div>
+	
+	<div class="col-md-8">
+	  	<h2>Tasks</h2>
+	  	<table class="table table-bordered table-striped text-center" summary="Tasks List">
+			<tr class="header">
+				<th>&nbsp;</th>
+				<th>Required?</th>
+				<th>status_code</th>
+				<th>assigned_to</th>
+				<th>required_by</th>
+				<th>priority_code</th>
+				<th>doc_type_code</th>
+				<th>desc</th>
+			</tr>
+			<% i = 0 %>	
+			<% @tasks.each do |task|%>	
+			<tr>
+					<td><%=task.id%></td>
+					<td><%=task.is_required%></td>
+					<td><%=task.status_code%></td>
+					<td><%=task.assigned_to%></td>
+					<td><%=task.required_by%></td>
+					<td><%=task.priority_code%></td>
+					<td><%=task.doc_type_code%></td>
+					<td><%=task.desc%></td
+			</tr>
+			<% i = i + 1 %>	
+			<% end %>
+		</table>
+		
+		<h1>You have <%=i%> outstanding tasks</h1>
+ 	 </div>
+  
+  
+  
+  	<div class="col-md-1"> </div>
+
+
+
+</div>
+
+  

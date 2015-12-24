@@ -1,0 +1,48 @@
+<div class="row row-1">
+	<%= render(:partial => '/project/banner') %>  
+</div>
+
+
+<div class="row row-2">
+
+  	<div class="col-md-3">
+	  	<%= render(:partial => '/project/sidenavigation') %>
+  	</div>
+	
+  	<div class="col-md-8">
+		<form>
+			<div class="form-group">
+
+  	  		  <%= form_for(:master_po, :url => {:action => 'create'}) do |f| %>
+
+
+    				<table summary="Subject form fields">
+					
+						<tr>
+							<th>Project ID</th>
+							<td><%= f.text_field(:project_id)%></td>
+      					</tr>
+						<tr>
+							<th>PO Number</th>
+							<td><%= f.text_field(:po_num)%></td>
+						</tr>
+						<tr>
+							<th>Created At</th>
+							<td><%= f.date_select :created_date%></td>
+						</tr>
+					
+						
+					</table>
+					
+						<%=submit_tag("Create PO")%>
+					<% end %>
+				</div>
+  	
+
+			</form>
+		</div>
+
+
+  	<div class="col-md-1"></div>
+
+</div>
