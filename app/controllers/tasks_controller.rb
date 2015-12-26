@@ -1,7 +1,10 @@
 class TasksController < ApplicationController
 
+  def show 
+  end
+  
   def index
-    @tasks = ApprovalDoc.order("priority_code")
+    @tasks = Task.order("position ASC")
   end
   
   

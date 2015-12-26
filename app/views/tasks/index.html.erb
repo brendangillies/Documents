@@ -3,42 +3,40 @@
 </div>
 
 
-<div class = "row text-center row-3">
+<div class = "row text-center row-2">
 
   	<div class="col-md-3">
 	  	<%= render(:partial => '/project/sidenavigation') %>
   	</div>
 	
 	<div class="col-md-8">
-	  	<h2>Tasks</h2>
+	  	<h3>Tasks</h3>
 	  	<table class="table table-bordered table-striped text-center" summary="Tasks List">
 			<tr class="header">
 				<th>&nbsp;</th>
-				<th>Required?</th>
-				<th>status_code</th>
-				<th>assigned_to</th>
-				<th>required_by</th>
-				<th>priority_code</th>
-				<th>doc_type_code</th>
-				<th>desc</th>
+				<th>Description</th>
+				<th>Created By</th>
+				<th>Assigned to</th>
+				<th>Company Id</th>
+				<th>Project Id</th>
+				<th>Priority Code</th>
 			</tr>
 			<% i = 0 %>	
 			<% @tasks.each do |task|%>	
 			<tr>
-					<td><%=task.id%></td>
-					<td><%=task.is_required%></td>
-					<td><%=task.status_code%></td>
-					<td><%=task.assigned_to%></td>
-					<td><%=task.required_by%></td>
-					<td><%=task.priority_code%></td>
-					<td><%=task.doc_type_code%></td>
-					<td><%=task.desc%></td
+					<td><%=task.position%></td>
+					<td><%=task.description%></td>
+					<td><%=task.created_by%></td>
+					<td><%= %></td>
+					<td><%=task.company_id%></td>
+					<td><%=task.project_id%></td>
+					<td><%= %></td
 			</tr>
 			<% i = i + 1 %>	
 			<% end %>
 		</table>
 		
-		<h1>You have <%=i%> outstanding tasks</h1>
+		<h3>You have <%=i%> outstanding tasks</h3>
  	 </div>
   
   

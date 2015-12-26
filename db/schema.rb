@@ -101,7 +101,15 @@ ActiveRecord::Schema.define(version: 20151223200125) do
   end
 
   create_table "tasks", force: :cascade do |t|
+    t.integer "position",    limit: 4,   null: false
+    t.string  "description", limit: 200
+    t.string  "created_by",  limit: 255, null: false
+    t.integer "company_id",  limit: 4,   null: false
+    t.integer "project_id",  limit: 4,   null: false
   end
+
+  add_index "tasks", ["company_id"], name: "company_po_idx", using: :btree
+  add_index "tasks", ["project_id"], name: "project_id_idx", using: :btree
 
   create_table "test_1", id: false, force: :cascade do |t|
     t.integer "TEST", limit: 4
@@ -134,5 +142,8 @@ ActiveRecord::Schema.define(version: 20151223200125) do
     t.integer "role_code",  limit: 4,  null: false
     t.binary  "is_active",  limit: 1
   end
+
+  add_index "users", ["company_id"], name: "company_po_idx", using: :btree
+  add_index "users", ["role_code"], name: "role_code_idx", using: :btree
 
 end

@@ -6,30 +6,35 @@ body {
 	background: lightgrey;
 }
 
+.col-2 {
+	background: grey;
+	height: 20vw;
+}
+
 th {
 	text-align: center;
 }
+
 .row-1 {
-	padding-left: 1vw;
 	height: 50px;
 }
 
-.row-2 {
+.row-3 {
+	background: grey;
+	padding: 15px;
 }
+
+
+.row-4 {
+	background: green;
+	padding: 15px;
+}
+
+
+
+
 
 .navbar-brand {
 	height: 1vw;
 }
 
-
-
-.col-1 {
-	background: lightgreen;
-}
-
-.col-2 {
-	background: lightblue;
-}
-.col-3 {
-	background: orange;
-}
