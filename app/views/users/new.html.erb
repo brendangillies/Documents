@@ -1,0 +1,33 @@
+		
+	<div class="row text-center">
+		<form>
+			<div class="form-group centered">
+
+  	  		  <%= form_for(:user, :url => {:action => 'create'}) do |f| %>
+
+
+    				<table summary="Subject form fields">
+					
+						<tr>
+							<th>Username</th>
+							<td><%= f.text_field(:user_name)%></td>
+      					</tr>
+						<tr>
+							<th>Company Name</th>
+							<td><%= f.text_field(:company_name)%></td>
+						</tr>
+						<tr>
+							<th>Created At</th>
+							<td><%= f.date_select :created_date%></td>
+						</tr>
+					
+						
+					</table>
+					
+						<%=submit_tag("Create PO")%>
+					<% end %>
+				</div>
+  	
+
+			</form>
+		</div>
