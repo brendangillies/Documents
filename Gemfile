@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.1.8'
 
 #sql database
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -37,9 +37,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
- gem 'puma'
+ gem 'puma' 
 
+gem 'will_paginate', '3.0.3'
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
