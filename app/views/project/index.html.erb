@@ -11,7 +11,7 @@
   
   
   	<div class="col-md-8">
-	  <h2>Your Project</h2>
+	  <h2>Your Projects</h2>
 	 	
 		<div class="row row-1">
 		</div>
@@ -20,16 +20,19 @@
 	
   			<table class="table table-bordered table-striped text-center" summary="Tasks List">
 				<tr class="header">
-					<th>po_id</th>
-					<th>po_num</th>
-					<th>created_date</th>
-					<th>project_id</th>
-					<th>is_active</th>
-					<th>company_id</th>
+					<th>Project Name</th>
+					<th>Company ID</th>
+					<th>Description</th>
+					<th>Company ID</th>
+					<th>Team Members</th>
+					<th>Created Date</th>
+					<th>Membership</th>
+					
 				</tr>
 				<% i = 0 %>	
 				<% @pos.each do |po|%>	
 				<tr>
+					<td><%=po.po_id%></td>
 					<td><%=po.po_id%></td>
 					<td><%=po.po_num%></td>
 					<td><%=po.created_date%></td>
