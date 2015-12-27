@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+class CreateDatabase < ActiveRecord::Migration
+  def self.up
+    ActiveRecord::Schema.define(version: 0) do
 
   create_table "approval_docs", force: true do |t|
     t.integer  "line_item_id",              null: false
@@ -126,5 +128,8 @@ ActiveRecord::Schema.define(version: 1) do
   end
 
   add_index "users", ["user_name"], name: "user_name_UNIQUE", unique: true, using: :btree
-
+  end 
+end
+  def self.down
+  end
 end
