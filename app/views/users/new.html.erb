@@ -1,6 +1,6 @@
 		
 	<div class="row text-center">
-		<form>
+			<form>
 			<div class="form-group centered">
 
   	  		  <%= form_for(:user, :url => {:action => 'create'}) do |f| %>
@@ -20,13 +20,19 @@
 							<th>Created At</th>
 							<td><%= f.date_select :created_date%></td>
 						</tr>
+						<tr>
+							<th>Role</th>
+							<td> </td>
+						</tr>
 					
 						
 					</table>
-						<%=submit_tag("Create PO")%>
+						<%=submit_tag("Create User")%>
 					<% end %>
 				</div>
   	
 
 			</form>
+			
+			
 		</div>
