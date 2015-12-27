@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   end
   
   def index
+    @pos = MasterPo.order("created_date ASC")
     @polineitems = PoLineItem.order("item_id")
   end
   

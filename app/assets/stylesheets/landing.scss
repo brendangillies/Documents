@@ -1,3 +1,30 @@
 // Place all the styles related to the landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1 {
+	color: white;
+	padding-top: 5vw;
+}
+
+h2 {
+	color: white;
+}
+
+p {
+	color: white;
+}
+
+
+.row-landing {
+	background:
+		linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+    	), 
+		url('clean_office_desk.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 50vw;
+}

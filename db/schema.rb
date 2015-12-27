@@ -97,7 +97,29 @@ ActiveRecord::Schema.define(version: 1) do
   add_index "project_po_list", ["po_id"], name: "proj_po_link1_idx", using: :btree
   add_index "project_po_list", ["project_id"], name: "proj_link_idx", using: :btree
 
+<<<<<<< HEAD
   create_table "user_company", id: false, force: true do |t|
+=======
+  create_table "projects", force: :cascade do |t|
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "position",    limit: 4,   null: false
+    t.string  "description", limit: 200
+    t.string  "created_by",  limit: 255, null: false
+    t.integer "company_id",  limit: 4,   null: false
+    t.integer "project_id",  limit: 4,   null: false
+  end
+
+  add_index "tasks", ["company_id"], name: "company_po_idx", using: :btree
+  add_index "tasks", ["project_id"], name: "project_id_idx", using: :btree
+
+  create_table "test_1", id: false, force: :cascade do |t|
+    t.integer "TEST", limit: 4
+  end
+
+  create_table "user_company", id: false, force: :cascade do |t|
+>>>>>>> 11b656801fe827cd9d215001a3eb473f537c51da
     t.string   "user_name",    limit: 45, null: false
     t.integer  "company_id",              null: false
     t.binary   "is_active",    limit: 1,  null: false
@@ -125,6 +147,11 @@ ActiveRecord::Schema.define(version: 1) do
     t.binary   "is_active",    limit: 1,  null: false
   end
 
+<<<<<<< HEAD
   add_index "users", ["user_name"], name: "user_name_UNIQUE", unique: true, using: :btree
+=======
+  add_index "users", ["company_id"], name: "company_po_idx", using: :btree
+  add_index "users", ["role_code"], name: "role_code_idx", using: :btree
+>>>>>>> 11b656801fe827cd9d215001a3eb473f537c51da
 
 end
