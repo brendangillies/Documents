@@ -140,11 +140,22 @@ ActiveRecord::Schema.define(version: 1) do
   add_index "user_company_roles", ["role_code"], name: "comp_role_role_idx", using: :btree
   add_index "user_company_roles", ["user_name", "company_id", "role_code"], name: "company_role_unique", unique: true, using: :btree
 
+<<<<<<< HEAD
   create_table "users", force: true do |t|
     t.string   "user_name",    limit: 45, null: false
     t.string   "common_name",  limit: 60
     t.datetime "created_date"
     t.binary   "is_active",    limit: 1,  null: false
+=======
+  create_table "users", force: :cascade do |t|
+    t.string  "first_name", limit: 45,              null: false
+    t.string  "last_name",  limit: 45,              null: false
+    t.string  "email",      limit: 75, default: "", null: false
+    t.string  "user_name",  limit: 45,              null: false
+    t.integer "company_id", limit: 4
+    t.integer "role_code",  limit: 4
+    t.binary  "is_active",  limit: 1
+>>>>>>> d0a9421f9148fc2898772d74ae7adcf724ae245c
   end
 
 <<<<<<< HEAD
@@ -152,6 +163,10 @@ ActiveRecord::Schema.define(version: 1) do
 =======
   add_index "users", ["company_id"], name: "company_po_idx", using: :btree
   add_index "users", ["role_code"], name: "role_code_idx", using: :btree
+<<<<<<< HEAD
 >>>>>>> 11b656801fe827cd9d215001a3eb473f537c51da
+=======
+  add_index "users", ["user_name"], name: "user_name_idx", using: :btree
+>>>>>>> d0a9421f9148fc2898772d74ae7adcf724ae245c
 
 end
