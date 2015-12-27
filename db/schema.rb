@@ -137,13 +137,17 @@ ActiveRecord::Schema.define(version: 20151223200125) do
   add_index "user_company_roles", ["user_name", "company_id", "role_code"], name: "company_role_unique", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string  "user_name",  limit: 45, null: false
-    t.integer "company_id", limit: 4,  null: false
-    t.integer "role_code",  limit: 4,  null: false
+    t.string  "first_name", limit: 45,              null: false
+    t.string  "last_name",  limit: 45,              null: false
+    t.string  "email",      limit: 75, default: "", null: false
+    t.string  "user_name",  limit: 45,              null: false
+    t.integer "company_id", limit: 4
+    t.integer "role_code",  limit: 4
     t.binary  "is_active",  limit: 1
   end
 
   add_index "users", ["company_id"], name: "company_po_idx", using: :btree
   add_index "users", ["role_code"], name: "role_code_idx", using: :btree
+  add_index "users", ["user_name"], name: "user_name_idx", using: :btree
 
 end

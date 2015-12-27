@@ -1,1 +1,6 @@
-<h1>Display list of users here</h1>
+	
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+			<h3><%= flash[:notice]%></h3>
+	</div>
+<% end%>
