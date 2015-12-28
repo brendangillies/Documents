@@ -97,9 +97,8 @@ ActiveRecord::Schema.define(version: 1) do
   add_index "project_po_list", ["po_id"], name: "proj_po_link1_idx", using: :btree
   add_index "project_po_list", ["project_id"], name: "proj_link_idx", using: :btree
 
-<<<<<<< HEAD
-  create_table "user_company", id: false, force: true do |t|
-=======
+
+
   create_table "projects", force: :cascade do |t|
   end
 
@@ -119,7 +118,6 @@ ActiveRecord::Schema.define(version: 1) do
   end
 
   create_table "user_company", id: false, force: :cascade do |t|
->>>>>>> 11b656801fe827cd9d215001a3eb473f537c51da
     t.string   "user_name",    limit: 45, null: false
     t.integer  "company_id",              null: false
     t.binary   "is_active",    limit: 1,  null: false
@@ -140,13 +138,7 @@ ActiveRecord::Schema.define(version: 1) do
   add_index "user_company_roles", ["role_code"], name: "comp_role_role_idx", using: :btree
   add_index "user_company_roles", ["user_name", "company_id", "role_code"], name: "company_role_unique", unique: true, using: :btree
 
-<<<<<<< HEAD
-  create_table "users", force: true do |t|
-    t.string   "user_name",    limit: 45, null: false
-    t.string   "common_name",  limit: 60
-    t.datetime "created_date"
-    t.binary   "is_active",    limit: 1,  null: false
-=======
+
   create_table "users", force: :cascade do |t|
     t.string  "first_name", limit: 45,              null: false
     t.string  "last_name",  limit: 45,              null: false
@@ -155,18 +147,10 @@ ActiveRecord::Schema.define(version: 1) do
     t.integer "company_id", limit: 4
     t.integer "role_code",  limit: 4
     t.binary  "is_active",  limit: 1
->>>>>>> d0a9421f9148fc2898772d74ae7adcf724ae245c
   end
 
-<<<<<<< HEAD
   add_index "users", ["user_name"], name: "user_name_UNIQUE", unique: true, using: :btree
-=======
   add_index "users", ["company_id"], name: "company_po_idx", using: :btree
   add_index "users", ["role_code"], name: "role_code_idx", using: :btree
-<<<<<<< HEAD
->>>>>>> 11b656801fe827cd9d215001a3eb473f537c51da
-=======
-  add_index "users", ["user_name"], name: "user_name_idx", using: :btree
->>>>>>> d0a9421f9148fc2898772d74ae7adcf724ae245c
 
 end
