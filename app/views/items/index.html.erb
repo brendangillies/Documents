@@ -13,30 +13,27 @@
   
   <div class="col-md-8">
   	<h2>Purchases List</h2>
-  	<table class="table table-bordered table-striped text-center" summary="PO List">
+	
+	<table class="table table-bordered table-striped text-center">
 		<tr class="header">
 			<th>&nbsp;</th>
-			<th>PO #</th>
-			<th>Line #</th>
-			<th>Submittals</th>
-			<th>Price</th>
-			<th>Status Code</th>
-			<th>Approved by Date</th>
-			<th>&nbsp;</th>
+			<th>po_num</th>
+			<th>Vendor</th>
+			<th>Description</th>
+			<th>Line Items</th>
+			<th>Details</th>
 		</tr>
 		<% i = 0 %>	
-		<% @polineitems.each do |polineitem|%>	
+		<% @pos.each do |po|%>	
 		<tr>
-				<td><%=polineitem.item_id%></td>
-				<td><%=polineitem.po_id%></td>
-				<td><%=polineitem.line_item_num%></td>
-				<td><%=polineitem.docs_required%></td>
-				<td><%=polineitem.price%></td>
-				<td><%=polineitem.status_code%></td>
-				<td><%=polineitem.approved_by_date%></td>
-				<td><%= link_to("Details", {:action => 'show'}, :class => 'show')%></td>
-		</tr>
-		<% i = i + 1 %>	
+			<td><%=po.po_id%></td>
+			<td><%=po.po_num%></td>
+			<td><%=po.company_id%></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><a href="/items/show">Details</a></td>
+	
+		</tr>	
 		<% end %>
 	</table>
   </div>

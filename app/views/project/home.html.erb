@@ -2,19 +2,52 @@
 	<%= render(:partial => 'banner') %>  
 </div>
 
+<div class = "row row-2 text-center">
+	<div class="col-md-3">
+	  		<%= render(:partial => '/project/sidenavigation') %>
+	</div>
 
-<div class = "row text-center row-2 container-fluid">
-  	<div class="col-md-6 col-1">
-		<h1>You have <%=@tasks%> outstanding tasks</h1>
-  	</div>
-  	<div class="col-md-3 col-2">
-		<h1>ACTION</h1>
-  	</div>
-  	<div class="col-md-3 col-3">
-		<h1>ACTION</h1>
-  	</div>
+
+	<div class="col-md-9">
+
+		<div class ="row row-2 text-center">
+			
+			<div class="col-md-9">
+				<h2>PROJECT#NAME DASHBOARD </h2>
+			</div>
+			
+			<div class="col-md-3">
+				<br><a href="/project/index">Change Project</a>
+				<br><a href="/users/index">Manage Profile</a>
+			</div>
+		</div>
+		
+		
+		<div class ="row row-3 text-center">
+				<h2>You have <%=@tasks%> high priority tasks. </h2>
+				<h3>You have <%=@tasks%> remaining this week</h3>
+			  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
+				<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">Add Priority</a>
+		</div>
+
+		<div class ="row row-4 text-center">
+			<h2>Your team is on track.</h2>
+			<h3>5 outstanding tasks due this week</h3>
+		  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
+			<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">Productivity</a>
+  		</div>
+		
+		<div class ="row row-3 text-center">
+			<h2><%=@tasks%> change requests outstanding. </h2>
+			<h3>You have <%=@tasks%> due this week</h3>
+			  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">List</a><%=" "%>
+				<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">Manage Vendors</a>
+		</div>
+
+	</div>
+
 </div>
 
-<div class="row text-center row 3">
-	<h1>ACTIONS</h1>
+<div class="row row-1">
+	<%= render(:partial => '/landing/footer') %>  
 </div>

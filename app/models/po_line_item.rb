@@ -1,5 +1,6 @@
 class PoLineItem < ActiveRecord::Base
-  has_one :master_po
+  belongs_to :master_po
   has_many :approval_docs
+  has_many :tasks
 
 end
