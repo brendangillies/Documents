@@ -1,0 +1,17 @@
+<%= form_for(@approval_doc) do |f| %>
+  <% if @approval_doc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@approval_doc.errors.count, "error") %> prohibited this approval_doc from being saved:</h2>
+
+      <ul>
+      <% @approval_doc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

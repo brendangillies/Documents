@@ -1,0 +1,23 @@
+<h1>Listing approval_docs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @approval_docs.each do |approval_doc| %>
+      <tr>
+        <td><%= link_to 'Show', approval_doc %></td>
+        <td><%= link_to 'Edit', edit_approval_doc_path(approval_doc) %></td>
+        <td><%= link_to 'Destroy', approval_doc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Approval doc', new_approval_doc_path %>
