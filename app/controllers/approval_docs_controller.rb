@@ -69,7 +69,7 @@ class ApprovalDocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def approval_doc_params
-      #params[:approval_doc]
-      params.require(:article).permit(:id, :name, :line_item_id)
+      params[:approval_doc]
+      #params.require(:article).permit(:id, :name, :line_item_id)
     end
 end

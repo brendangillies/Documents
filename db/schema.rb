@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229012031) do
+ActiveRecord::Schema.define(version: 20151231192108) do
 
   create_table "approval_comments", force: true do |t|
     t.integer  "approval_doc_id"
@@ -88,13 +88,6 @@ ActiveRecord::Schema.define(version: 20151229012031) do
   add_index "po_line_items", ["po_id"], name: "po_master_item_link_idx", using: :btree
   add_index "po_line_items", ["status_code"], name: "po_item_codes_idx", using: :btree
 
-  create_table "project_list", primary_key: "project_id", force: true do |t|
-    t.string "project_name", limit: 45
-    t.binary "is_active",    limit: 1,  default: "0", null: false
-  end
-
-  add_index "project_list", ["project_name"], name: "project_name_UNIQUE", unique: true, using: :btree
-
   create_table "project_po_list", force: true do |t|
     t.integer  "project_id",                 null: false
     t.integer  "po_id",                      null: false
@@ -109,8 +102,12 @@ ActiveRecord::Schema.define(version: 20151229012031) do
   add_index "project_po_list", ["po_id"], name: "proj_po_link1_idx", using: :btree
   add_index "project_po_list", ["project_id"], name: "proj_link_idx", using: :btree
 
-  create_table "projects", force: true do |t|
+  create_table "projects", primary_key: "project_id", force: true do |t|
+    t.string "project_name", limit: 45
+    t.binary "is_active",    limit: 1,  default: "0", null: false
   end
+
+  add_index "projects", ["project_name"], name: "project_name_UNIQUE", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
     t.integer "position",                null: false
