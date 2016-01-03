@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231192108) do
+ActiveRecord::Schema.define(version: 20151231201301) do
 
   create_table "approval_comments", force: true do |t|
     t.integer  "approval_doc_id"
@@ -62,18 +62,7 @@ ActiveRecord::Schema.define(version: 20151231192108) do
 
   add_index "company_list", ["comapny_name"], name: "comapny_name_UNIQUE", unique: true, using: :btree
 
-  create_table "master_pos", primary_key: "po_id", force: true do |t|
-    t.string  "po_num",       limit: 45, null: false
-    t.date    "created_date",            null: false
-    t.integer "project_id"
-    t.binary  "is_active",    limit: 1
-    t.integer "company_id"
-  end
-
-  add_index "master_pos", ["company_id"], name: "company_po_idx", using: :btree
-  add_index "master_pos", ["project_id"], name: "po_project_fk_idx", using: :btree
-
-  create_table "po_line_items", primary_key: "item_id", force: true do |t|
+  create_table "items", primary_key: "item_id", force: true do |t|
     t.integer  "po_id",                                                              null: false
     t.string   "line_item_num",    limit: 45,                                        null: false
     t.string   "line_item_desc",   limit: 45
@@ -84,9 +73,20 @@ ActiveRecord::Schema.define(version: 20151231192108) do
     t.integer  "doc_list_id"
   end
 
-  add_index "po_line_items", ["line_item_num"], name: "line_item_num_UNIQUE", unique: true, using: :btree
-  add_index "po_line_items", ["po_id"], name: "po_master_item_link_idx", using: :btree
-  add_index "po_line_items", ["status_code"], name: "po_item_codes_idx", using: :btree
+  add_index "items", ["line_item_num"], name: "line_item_num_UNIQUE", unique: true, using: :btree
+  add_index "items", ["po_id"], name: "po_master_item_link_idx", using: :btree
+  add_index "items", ["status_code"], name: "po_item_codes_idx", using: :btree
+
+  create_table "master_pos", primary_key: "po_id", force: true do |t|
+    t.string  "po_num",       limit: 45, null: false
+    t.date    "created_date",            null: false
+    t.integer "project_id"
+    t.binary  "is_active",    limit: 1
+    t.integer "company_id"
+  end
+
+  add_index "master_pos", ["company_id"], name: "company_po_idx", using: :btree
+  add_index "master_pos", ["project_id"], name: "po_project_fk_idx", using: :btree
 
   create_table "project_po_list", force: true do |t|
     t.integer  "project_id",                 null: false
