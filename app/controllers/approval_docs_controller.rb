@@ -24,8 +24,12 @@ class ApprovalDocsController < ApplicationController
   # POST /approval_docs
   # POST /approval_docs.json
   def create
-    @line_item_id = 
-    @approval_doc = ApprovalDoc.new(approval_doc_params)
+    if(params.has_key?(:item_id))
+    @item = Item.find(params[:item_id])
+    else @item = Item.find(1)
+    end
+    @approval_doc = @item.approval_docs.create(approval_doc_params)
+    #@approval_doc = ApprovalDoc.new(approval_doc_params)
 
     respond_to do |format|
       if @approval_doc.save
@@ -71,6 +75,6 @@ class ApprovalDocsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def approval_doc_params
       #params[:approval_doc]
-      params.require(:approval_doc).permit(:id, :name, :line_item_id)
+      params.require(:approval_doc).permit(:name, :item_id, :priority_code, :required_by, :doc_type_code, :desc)
     end
 end

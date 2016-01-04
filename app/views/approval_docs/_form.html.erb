@@ -25,7 +25,7 @@
   </div> 
    <div class="field">
     <%= f.label "Document Type" %><br>
-    <%= f.text_field :doc_type_code %>
+    <%= f.number_field(:doc_type_code, in: 1.0..20.0, step: 1) %>
   </div> 
    <div class="field">
     <%= f.label "Summary/Description" %><br>

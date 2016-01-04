@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231201301) do
+ActiveRecord::Schema.define(version: 20160103182617) do
 
   create_table "approval_comments", force: true do |t|
     t.integer  "approval_doc_id"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20151231201301) do
   add_index "approval_comments", ["user_id"], name: "index_approval_comments_on_user_id", using: :btree
 
   create_table "approval_docs", force: true do |t|
-    t.integer  "line_item_id",              null: false
-    t.binary   "is_required",   limit: 1,   null: false
-    t.integer  "status_code",               null: false
+    t.integer  "item_id"
+    t.binary   "is_required",   limit: 1
+    t.integer  "status_code"
     t.string   "assigned_to",   limit: 45
     t.datetime "required_by"
-    t.integer  "priority_code",             null: false
+    t.integer  "priority_code"
     t.integer  "doc_type_code"
     t.string   "desc",          limit: 140
     t.string   "name"
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 20151231201301) do
 
   add_index "approval_docs", ["assigned_to"], name: "app_doc_assigned_to_idx", using: :btree
   add_index "approval_docs", ["doc_type_code"], name: "app_doc_type_cd_idx", using: :btree
-  add_index "approval_docs", ["line_item_id"], name: "app_doc_item_id_idx", using: :btree
+  add_index "approval_docs", ["item_id"], name: "app_doc_item_id_idx", using: :btree
   add_index "approval_docs", ["priority_code"], name: "app_doc_priotity_cd_idx", using: :btree
   add_index "approval_docs", ["status_code"], name: "app_doc_status_cd_idx", using: :btree
 
   create_table "approval_hists", force: true do |t|
-    t.integer  "object_id",                null: false
-    t.integer  "approval_code",            null: false
-    t.datetime "update_date",              null: false
-    t.string   "updated_by",    limit: 45, null: false
+    t.integer  "approval_doc_id"
+    t.integer  "approval_code"
+    t.datetime "update_date"
+    t.string   "updated_by",      limit: 45
   end
 
   add_index "approval_hists", ["updated_by"], name: "update_by_user_idx", using: :btree
@@ -63,12 +63,12 @@ ActiveRecord::Schema.define(version: 20151231201301) do
   add_index "company_list", ["comapny_name"], name: "comapny_name_UNIQUE", unique: true, using: :btree
 
   create_table "items", primary_key: "item_id", force: true do |t|
-    t.integer  "po_id",                                                              null: false
-    t.string   "line_item_num",    limit: 45,                                        null: false
+    t.integer  "po_id"
+    t.string   "line_item_num",    limit: 45
     t.string   "line_item_desc",   limit: 45
-    t.binary   "docs_required",    limit: 1,                           default: "0", null: false
+    t.binary   "docs_required",    limit: 1,                           default: "0"
     t.decimal  "price",                       precision: 10, scale: 2
-    t.integer  "status_code",                                                        null: false
+    t.integer  "status_code"
     t.datetime "approved_by_date"
     t.integer  "doc_list_id"
   end
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20151231201301) do
   add_index "items", ["status_code"], name: "po_item_codes_idx", using: :btree
 
   create_table "master_pos", primary_key: "po_id", force: true do |t|
-    t.string  "po_num",       limit: 45, null: false
-    t.date    "created_date",            null: false
+    t.string  "po_num",       limit: 45
+    t.date    "created_date"
     t.integer "project_id"
     t.binary  "is_active",    limit: 1
     t.integer "company_id"
@@ -89,10 +89,10 @@ ActiveRecord::Schema.define(version: 20151231201301) do
   add_index "master_pos", ["project_id"], name: "po_project_fk_idx", using: :btree
 
   create_table "project_po_list", force: true do |t|
-    t.integer  "project_id",                 null: false
-    t.integer  "po_id",                      null: false
-    t.string   "project_name",    limit: 45, null: false
-    t.string   "po_num",          limit: 45, null: false
+    t.integer  "project_id"
+    t.integer  "po_id"
+    t.string   "project_name",    limit: 45
+    t.string   "po_num",          limit: 45
     t.binary   "is_approved",     limit: 1
     t.datetime "approve_by_date"
     t.datetime "approval_date"
@@ -104,17 +104,17 @@ ActiveRecord::Schema.define(version: 20151231201301) do
 
   create_table "projects", primary_key: "project_id", force: true do |t|
     t.string "project_name", limit: 45
-    t.binary "is_active",    limit: 1,  default: "0", null: false
+    t.binary "is_active",    limit: 1,  default: "0"
   end
 
   add_index "projects", ["project_name"], name: "project_name_UNIQUE", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
-    t.integer "position",                null: false
+    t.integer "position"
     t.string  "description", limit: 200
-    t.string  "created_by",              null: false
-    t.integer "company_id",              null: false
-    t.integer "project_id",              null: false
+    t.string  "created_by"
+    t.integer "company_id"
+    t.integer "project_id"
   end
 
   add_index "tasks", ["company_id"], name: "company_po_idx", using: :btree
@@ -125,19 +125,19 @@ ActiveRecord::Schema.define(version: 20151231201301) do
   end
 
   create_table "user_company", id: false, force: true do |t|
-    t.string   "user_name",    limit: 45, null: false
-    t.integer  "company_id",   limit: 1,  null: false
-    t.binary   "is_active",    limit: 1,  null: false
-    t.datetime "created_date",            null: false
+    t.string   "user_name",    limit: 45
+    t.integer  "company_id",   limit: 1
+    t.binary   "is_active",    limit: 1
+    t.datetime "created_date"
   end
 
   add_index "user_company", ["company_id"], name: "company_id_UNIQUE", unique: true, using: :btree
   add_index "user_company", ["user_name"], name: "user_name_UNIQUE", unique: true, using: :btree
 
   create_table "user_company_roles", force: true do |t|
-    t.string  "user_name",  limit: 45, null: false
-    t.integer "company_id",            null: false
-    t.integer "role_code",             null: false
+    t.string  "user_name",  limit: 45
+    t.integer "company_id"
+    t.integer "role_code"
     t.binary  "is_active",  limit: 1
   end
 
@@ -146,10 +146,10 @@ ActiveRecord::Schema.define(version: 20151231201301) do
   add_index "user_company_roles", ["user_name", "company_id", "role_code"], name: "company_role_unique", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string  "first_name", limit: 45,              null: false
-    t.string  "last_name",  limit: 45,              null: false
-    t.string  "email",      limit: 75, default: "", null: false
-    t.string  "user_name",  limit: 45,              null: false
+    t.string  "first_name", limit: 45
+    t.string  "last_name",  limit: 45
+    t.string  "email",      limit: 75, default: ""
+    t.string  "user_name",  limit: 45
     t.integer "company_id"
     t.integer "role_code"
     t.binary  "is_active",  limit: 1
