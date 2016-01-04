@@ -1,0 +1,38 @@
+<%= form_for(@approval_doc) do |f| %>
+  <% if @approval_doc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@approval_doc.errors.count, "error") %> prohibited this approval_doc from being saved:</h2>
+
+      <ul>
+      <% @approval_doc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Due Date" %><br>
+    <%= f.date_field :required_by %>
+  </div>  
+   <div class="field">
+    <%= f.label "Priority" %><br>
+    <%= f.text_field :priority_code %>
+  </div> 
+   <div class="field">
+    <%= f.label "Document Type" %><br>
+    <%= f.number_field(:doc_type_code, in: 1.0..20.0, step: 1) %>
+  </div> 
+   <div class="field">
+    <%= f.label "Summary/Description" %><br>
+    <%= f.text_area :desc %>
+  </div>   
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

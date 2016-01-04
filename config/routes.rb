@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'landing#index'
 
+  resources :approval_docs do
+    resources :approval_comments
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   match ':controller(/:action(/:id))', :via => [:get,:post]
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
   
   
   # Example resource route (maps HTTP verbs to controller actions automatically):
