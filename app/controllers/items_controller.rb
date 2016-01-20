@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     @po = MasterPo.new(po_params)
     #@item = Item.new(po_params) I don't know why we need to create a child just because we're creating the parent. 
     #you should be able to create a blank PO and add items later
-    if @item.save 
+    if @po.save 
       #&& @item.save 
       redirect_to(:action => 'index')
     else
