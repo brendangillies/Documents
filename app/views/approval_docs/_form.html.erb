@@ -11,6 +11,27 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Due Date" %><br>
+    <%= f.date_field :required_by %>
+  </div>  
+   <div class="field">
+    <%= f.label "Priority" %><br>
+    <%= f.text_field :priority_code %>
+  </div> 
+   <div class="field">
+    <%= f.label "Document Type" %><br>
+    <%= f.text_field :doc_type_code %>
+  </div> 
+   <div class="field">
+    <%= f.label "Summary/Description" %><br>
+    <%= f.text_area :desc %>
+  </div>   
+
   <div class="actions">
     <%= f.submit %>
   </div>

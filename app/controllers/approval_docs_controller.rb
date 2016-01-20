@@ -24,6 +24,7 @@ class ApprovalDocsController < ApplicationController
   # POST /approval_docs
   # POST /approval_docs.json
   def create
+    @line_item_id = 
     @approval_doc = ApprovalDoc.new(approval_doc_params)
 
     respond_to do |format|
@@ -70,6 +71,6 @@ class ApprovalDocsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def approval_doc_params
       #params[:approval_doc]
-      params.require(:article).permit(:id, :name, :line_item_id)
+      params.require(:approval_doc).permit(:id, :name, :line_item_id)
     end
 end

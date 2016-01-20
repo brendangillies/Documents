@@ -1,22 +1,24 @@
 class ItemsController < ApplicationController
   def show 
-    @polineitem = PoLineItem.find(1)
+    @polineitem = Item.find(1)
   end
   
   def index
     @pos = MasterPo.order("created_date ASC")
-    @polineitems = PoLineItem.order("item_id")
+    @items = Item.order("line_item_id")
   end
   
   
   def new
-    @item = MasterPo.new()
+    @item = Item.new()
   end
 
   def create 
-    @item = MasterPo.new(po_params)
-    @docs = PoLineItem.new(po_params)
-    if @item.save && @docs.save
+    @po = MasterPo.new(po_params)
+    #@item = Item.new(po_params) I don't know why we need to create a child just because we're creating the parent. 
+    #you should be able to create a blank PO and add items later
+    if @item.save 
+      #&& @item.save 
       redirect_to(:action => 'index')
     else
       # IF save fails, redisply the form so user can fix problems.
@@ -26,7 +28,7 @@ class ItemsController < ApplicationController
   
   private 
     def po_params 
-      params.require(:po_num).permit(:is_active, :company_id, :created_date, :project_id)
+      params.require(:item).permit(:is_active, :company_id, :created_date, :project_id)
     end
 
 end
