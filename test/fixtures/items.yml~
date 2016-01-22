@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+ po_id: 1
+ line_item_desc: 3" Gizmo
+ status_code: 0
+
+two:
+ id: 1
+ po_id: 1
+ line_item_desc: 35" Gizmo
+ status_code: 0
+# column: value
+#
+#  column: value

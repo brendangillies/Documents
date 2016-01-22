@@ -75,7 +75,11 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.99)
     mini_portile2 (2.0.0)
+<<<<<<< HEAD
+    minitest (5.8.3)
+=======
     minitest (5.8.4)
+>>>>>>> 0f414344718505b29afd6f2a2e6329864f3811b4
     multi_json (1.11.2)
     mysql2 (0.4.2)
     mysql2 (0.4.2-x86-mingw32)
@@ -164,7 +168,11 @@ DEPENDENCIES
   jquery-rails
   mysql2
   puma
+<<<<<<< HEAD
+  rails (= 4.2.5)
+=======
   rails
+>>>>>>> 0f414344718505b29afd6f2a2e6329864f3811b4
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

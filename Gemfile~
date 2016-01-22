@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+<<<<<<< HEAD
+gem 'rails', '4.2.5'
+=======
 gem 'rails'
+>>>>>>> 0f414344718505b29afd6f2a2e6329864f3811b4
 
 #sql database
 gem 'mysql2'
