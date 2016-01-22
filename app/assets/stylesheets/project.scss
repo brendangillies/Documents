@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h4 {
+	color: green;
+}
+
 body {
-	background: lightgrey;
+	background: white;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 .col-2 {
@@ -19,6 +24,7 @@ th {
 	height: 50px;
 }
 
+
 .row-3 {
 	background: grey;
 	padding: 15px;
@@ -26,7 +32,7 @@ th {
 
 
 .row-4 {
-	background: green;
+	background: lightnavy;
 	padding: 15px;
 }
 

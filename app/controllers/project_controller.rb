@@ -8,7 +8,11 @@ class ProjectController < ApplicationController
   end
   
   def dashboard
+    #change below to tasks = Lineitem.count
     @tasks = ApprovalDoc.count
+  end
+  
+  def schedule 
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="row row-1">
-	<%= render(:partial => 'banner') %>  
+	<%= render(:partial => '/landing/banner') %>  
 </div>
 
 <div class = "row row-2 text-center">
@@ -12,7 +12,7 @@
 		
 		<div class ="row text-center">
 			<div class="col-md-9">
-				<h2>PROJECT#NAME DASHBOARD </h2>
+				<h1>Project Dashboard</h1>
 			</div>
 			<div class="col-md-3">
 				<br><a href="/project/index">Change Project</a>
@@ -32,7 +32,7 @@
 			<h2>Your team is on track.</h2>
 			<h3>5 outstanding tasks due this week</h3>
 		  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
-			<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">Productivity</a>
+			<a class="btn btn-primary btn-med btn-1 " href="/project/schedule" role="button">Schedule</a>
   		</div>
 		
 		<div class ="row row-3 text-center">
@@ -46,6 +46,7 @@
 
 </div>
 
-<div class="row row-1">
-	<%= render(:partial => '/landing/footer') %>  
+<div class='row text-center'>
+	<%=render(:partial => '/landing/footer')%>
 </div>
+

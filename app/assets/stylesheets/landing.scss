@@ -5,13 +5,11 @@
 
 h1 {
 	color: white;
-	padding-top: 5vw;
 }
 
 h2 {
 	color: white;
 }
-
 
 p {
 	color: white;
@@ -30,10 +28,73 @@ a {
 		url('clean_office_desk.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 50vw;
-}
-
-.row-2 {
 	height: 40vw;
 }
 
+.landing-text {
+	padding-top: 100px;
+}
+
+
+.row-carousel {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+
+
+.row-2 {
+	background: lightgrey;
+}
+
+.row-footer {
+	background: white;
+}
+
+
+
+.col-left {
+	background:
+		linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+    	), 
+		red;
+	height: 315px;
+}
+
+.col-middle {
+	background:
+		linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+    	), 
+		green;
+		height: 315px;
+}
+
+.col-right {
+	background:
+		linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+    	), 
+		blue;
+	height: 315px;
+}
+
+
+.btn-primary {;
+	-webkit-transition: all 0.5s ease;
+	background: green;
+}
+
+.btn-primary:hover {
+	-webkit-transform: scale(1.1);
+	background: grey;
+	box-shadow: 3px 3px 5px #000;
+}
+
+.fa:hover {
+	-webkit-transform: scale(1.2);
+}

@@ -1,5 +1,5 @@
 <div class="row row-1">
-	<%= render(:partial => '/project/banner') %>  
+	<%= render(:partial => '/landing/banner') %>  
 </div>
 
 
@@ -10,12 +10,10 @@
   	</div>
 	
   	<div class="col-md-8">
+		
 		<form>
 			<div class="form-group">
-
   	  		  <%= form_for(:master_po, :url => {:action => 'create'}) do |f| %>
-
-
     				<table summary="Subject form fields">
 					
 						<tr>
@@ -27,14 +25,59 @@
 							<td><%= f.text_field(:po_num)%></td>
 						</tr>
 						<tr>
+							<th>Vendor</th>
+							<td><%= f.text_field(:vendor)%></td>
+						</tr>
+						<tr>
 							<th>Created At</th>
 							<td><%= f.date_select :created_date%></td>
 						</tr>
-					
+						<tr>
+							<th>Required Delivery (may change later)</th>
+							<td><%= f.date_select '#'%>/td>
+						</tr>
+						<tr>
+							<th>Design Drawings</th>
+							<td><%= f.check_box :design_drawings %> </td>
+							<th>Fabrication Drawings</th>
+							<td><%= f.check_box :fabrication_drawings %> </td>
+							<th>Inspection reports</th>
+							<th>Inspection & Test Plan</th>
+							<td><%= f.check_box :inspection_plan %> </td>
+							<th>Third Party Inspection Reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+						</tr>
+						<tr>
+							<th>Quality Plan</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+							<th>Delivery Schedule</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+							<th>Inspection reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+							<th>Inspection reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+						</tr>
+						<tr>
+							<th>Inspection reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+							<th>Inspection reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+							<th>Inspection reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+							<th>Inspection reports</th>
+							<td><%= f.check_box :inspection_reports %> </td>
+						</tr>
+						<tr>
+							<th>Required Delivery</th>
+							<td><%= f.date_select  '#'%> </td>
+							<th>Delivery Location</th>
+						</tr>
+						
+						
 						
 					</table>
 					
-						<%=submit_tag("Create PO")%>
+						<%=submit_tag("Next")%>
 					<% end %>
 				</div>
   	
