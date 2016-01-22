@@ -7,7 +7,7 @@ class ProjectController < ApplicationController
   def tasks 
   end
   
-  def home 
+  def dashboard
     @tasks = ApprovalDoc.count
   end
 

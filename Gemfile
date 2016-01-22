@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails'
 
 #sql database
-gem 'mysql2', '~> 0.3.18'
+gem 'mysql2'
 
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.5'
