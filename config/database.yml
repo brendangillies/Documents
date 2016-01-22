@@ -17,8 +17,8 @@ default: &default
   adapter: mysql2
   database: vendor_docs_development
   host: 127.0.0.1
-  username: root
-  password: 123qaz098
+  username: VendorDev
+  password: LaminarDev
   encoding: utf8
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling

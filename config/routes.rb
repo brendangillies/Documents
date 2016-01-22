@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'landing#index'
 
+  resources :approval_docs do
+    resources :approval_comments
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   match ':controller(/:action(/:id))', :via => [:get,:post]
@@ -14,9 +17,7 @@ Rails.application.routes.draw do
   
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :approval_docs do
-    resources :approval_comments
-  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do

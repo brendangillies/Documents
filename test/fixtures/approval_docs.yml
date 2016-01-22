@@ -4,8 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+ item_id: 1
+ name: TestDoc
+ desc: This is a test
+ status_code: 0
+ is_required: 1
+ priority_code: 10
 # column: value
 #
-two: {}
+two:
+ item_id: 2
+ name: TestDoc2
+ desc: This is a test
+ status_code: 0
+ is_required: 1
+ priority_code: 5
 #  column: value

@@ -18,7 +18,7 @@ class ApprovalDocsControllerTest < ActionController::TestCase
 
   test "should create approval_doc" do
     assert_difference('ApprovalDoc.count') do
-      post :create, approval_doc: {  }
+      post :create, approval_doc: { name: @approval_doc.name, item_id: @approval_doc.item_id }
     end
 
     assert_redirected_to approval_doc_path(assigns(:approval_doc))
@@ -35,7 +35,7 @@ class ApprovalDocsControllerTest < ActionController::TestCase
   end
 
   test "should update approval_doc" do
-    patch :update, id: @approval_doc, approval_doc: {  }
+    patch :update, id: @approval_doc, approval_doc: { name: @approval_doc.name, item_id: @approval_doc.item_id  }
     assert_redirected_to approval_doc_path(assigns(:approval_doc))
   end
 
