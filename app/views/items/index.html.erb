@@ -1,6 +1,6 @@
 
 <div class="row row-1">
-	<%= render(:partial => '/project/banner') %>  
+	<%= render(:partial => '/landing/banner') %>  
 </div>
 
 
@@ -12,16 +12,28 @@
   
   
   <div class="col-md-8">
-  	<h2>Purchases List</h2>
+	<div class ="row text-center">
+		<div class="col-md-9">
+			<h2>Purchases List</h2>
+		</div>
+		<div class="col-md-3">
+			<br><a href="/items/new">Create New PO</a>
+		</div>
+	</div>
+	
+	
+	
+	
 	
 	<table class="table table-bordered table-striped text-center">
 		<tr class="header">
-			<th>&nbsp;</th>
 			<th>po_num</th>
 			<th>Vendor</th>
 			<th>Description</th>
-			<th>Line Items</th>
+			<th>Line Items<br>(Deliverables)</th>
 			<th>Details</th>
+			<th>Ordered Date</th>
+			<th>Delivery Date(s)</th>
 		</tr>
 		<% i = 0 %>	
 		<% @pos.each do |po|%>	

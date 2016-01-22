@@ -5,10 +5,12 @@
 
 h1 {
 	color: white;
+	font-size: 4vw;
 }
 
 h2 {
 	color: white;
+	font-size: 2vw;
 }
 
 p {
@@ -87,6 +89,7 @@ a {
 .btn-primary {;
 	-webkit-transition: all 0.5s ease;
 	background: green;
+	height: 2vw;
 }
 
 .btn-primary:hover {
