@@ -51,6 +51,7 @@ a {
 
 .row-footer {
 	background: white;
+	padding-top: 15px;
 }
 
 
@@ -101,3 +102,29 @@ a {
 .fa:hover {
 	-webkit-transform: scale(1.2);
 }
+
+
+
+
+.col-footer-1 {
+	border-right: green solid 1px;
+	height: 150px;
+}
+
+.col-footer-2 {
+	border-right: green solid 1px;
+	height: 150px;
+}
+
+.col-footer-3 {
+	border-right: green solid 1px;
+	height: 150px;
+}
+
+
+.col-footer-4 {
+	height: 150px;
+}
+
+
+
