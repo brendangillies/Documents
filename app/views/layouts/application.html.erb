@@ -11,10 +11,26 @@
   
 </head>
 
+<div class="row">
+	<%= render(:partial => '/landing/banner') %>  
+</div>
+
+
+	<% if !flash[:notice].blank? %>
+		<div class="notice">
+			<%= flash[:notice]%>
+		</div>
+	<%end%>
+
+
 <body>
 <%= yield %>
 </body>
 
+
+<div class="row row-footer text-center">
+	<%= render(:partial => '/landing/footer') %>  
+</div>
 
 </html>
 

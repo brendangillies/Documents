@@ -1,0 +1,54 @@
+
+
+
+
+<div class = "row row-2 row-heading text-center">
+	<div class="col-md-3 col-side">
+	  		<%= render(:partial => '/projects/sidenavigation') %>
+	</div>
+
+
+	<div class="col-md-8">
+		
+		<div class ="row text-center">
+			<div class="col-md-9 col-title">
+				<h1>PO List</h1>
+			</div>
+			<div class="col-md-3">
+				<br><a href="index">Change Project</a>
+				<br><a href="/master_pos/new">Create New PO</a>
+			</div>
+		</div>
+		
+		
+		<div class ="row row-2 text-center">
+		  <table class="table table-bordered text-center" summary="Tasks List">
+			<tr class="header">
+				<th>PO ID</th>
+				<th>Project ID</th>
+				<th>Vendor ID</th>
+				<th>Line Items</th>
+				<th>Delivery Date</th>
+				<th>Details</th>
+				
+			</tr>
+				<% @pos.each do |po|%>
+			<tr>
+				<td><%=po.po_id%></td>
+				<td><%=po.project_id%></td>
+				<td><%=po.company_id%></td>
+				<td>Line item count</td>
+				<td>Delivery Date</td>
+			
+				<td><a href="#">SHOW</a></td>
+			</tr>	
+			<% end %>
+			</table>
+		</div>
+
+	<div class="col-md-1 col-side">
+	</div>
+
+	</div>
+
+</div>

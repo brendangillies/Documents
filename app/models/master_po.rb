@@ -4,5 +4,8 @@ class MasterPo < ActiveRecord::Base
   
   #scope :sorted, lambda { order("master_po.position ASC")}
 
+  scope :sorted, lambda { order("master_pos.po_id DESC")}
+  
+  
   
 end

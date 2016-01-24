@@ -11,6 +11,9 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
+.row-heading {
+	padding-top: 50px;
+}
 
 .col-2 {
 	background: grey;
@@ -23,25 +26,21 @@ th {
 
 .row-1 {
 	height: 50px;
-	outline: 1px solid white;
 }
 .row-2 {	
-	outline: 1px solid white;
 }
 
 
 
 .row-3 {
-	background: lightgrey;
+	background: grey;
 	padding: 15px;
-	outline: 1px solid white;
 }
 
 
 .row-4 {
-	background: lightgrey;
+	background: green;
 	padding: 15px;
-	outline: 1px solid white;
 }
 
 

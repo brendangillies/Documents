@@ -4,7 +4,7 @@
 
 <div class = "row row-2 text-center">
 	<div class="col-md-3 col-side">
-	  		<%= render(:partial => '/project/sidenavigation') %>
+	  		<%= render(:partial => 'sidenavigation') %>
 	</div>
 
 
@@ -15,7 +15,7 @@
 				<h1>Project Dashboard</h1>
 			</div>
 			<div class="col-md-3">
-				<br><a href="/project/index">Change Project</a>
+				<br><a href="index">Change Project</a>
 				<br><a href="/users/index">Manage Profile</a>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 			<h2>Your team is on track.</h2>
 			<h3>5 outstanding tasks due this week</h3>
 		  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
-			<a class="btn btn-primary btn-med btn-1 " href="/project/schedule" role="button">Schedule</a>
+			<a class="btn btn-primary btn-med btn-1 " href="schedule" role="button">Schedule</a>
   		</div>
 		
 		<div class ="row row-3 text-center">
@@ -45,7 +45,4 @@
 
 </div>
 
-<div class='row text-center'>
-	<%=render(:partial => '/landing/footer')%>
-</div>
 

@@ -1,0 +1,56 @@
+
+<div class = "row row-heading text-center row-2">
+	
+	
+  	  <div class="col-md-2"> 
+		  <%=render(:partial => '/projects/sidenavigation')%>
+	  </div>
+  
+  
+  	<div class="col-md-8">
+
+		<div class="row">
+	  		<h1>Create New Project</h1>
+		</div>
+		
+		<div class="row row-2">
+			<div class="col-md-4"></div>
+			
+			<div class="col-md-4">
+			
+			</br></br>
+		    <%= form_for(:project, :url => {:action => 'create'}) do |f| %>
+
+		      <table summary="Project form fields">
+		        <tr>
+		          <th>Project Name</th>
+		          <td><%= f.text_field(:project_name) %></td>
+		        </tr>
+		     
+		      </table>
+
+		      <div class="form-buttons">
+		        <%= submit_tag("Create Project") %>
+		      </div>
+
+		    <% end %>
+		</div>
+		
+		
+		
+		<div class="col-md-4"></div>
+		</div>
+		
+	
+	
+	</div>
+  
+  	<div class="col-md-2"> 
+  	</div>
+
+	
+</div>
+
+
+
+
