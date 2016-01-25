@@ -1,0 +1,49 @@
+
+<div class = "row row-heading text-center row-2">
+	
+	
+  	  <div class="col-md-2"> 
+		  <%=render(:partial => '/projects/sidenavigation')%>
+	  </div>
+  
+  
+  	<div class="col-md-8">
+
+		<div class="row">
+	  		<h1>Delete Project</h1>
+		</div>
+		
+		<div class="row row-2">
+			<div class="col-md-4"></div>
+			
+			<div class="col-md-4">
+			
+			</br></br>
+		    <%= form_for(:project, :url => {:action => 'destroy', :id => @project.id}) do |f| %>
+
+		     <p>Are you sure you permanenty want to delete this project?</p>
+			 <p class="reference-name"><%= @project.project_name %></p>
+
+		      <div class="form-buttons">
+		        <%= submit_tag("Delete Project") %>
+		      </div>
+			  <%  end %>
+
+		</div>
+		
+		
+		
+		<div class="col-md-4"></div>
+		</div>
+		
+	
+	
+	</div>
+  
+  	<div class="col-md-2"> 
+  	</div>
+
+	
+</div>
+
+

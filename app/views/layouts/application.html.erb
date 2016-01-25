@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>VendorDocs</title>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,16 +12,10 @@
   
 </head>
 
-<div class="row">
+<div class="row row-banner">
 	<%= render(:partial => '/landing/banner') %>  
 </div>
 
-
-	<% if !flash[:notice].blank? %>
-		<div class="notice">
-			<%= flash[:notice]%>
-		</div>
-	<%end%>
 
 
 <body>

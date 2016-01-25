@@ -1,0 +1,56 @@
+<div class = "row row-2 row-heading text-center">
+	<div class="col-md-3 col-side">
+	</div>
+
+
+	<div class="col-md-8">
+		
+		<div class ="row text-center">
+ 		
+			<div class="col-md-1">
+				<br>
+				<br><a href="/master_pos/index"><<--Back</a>
+			</div>
+		
+ 			<div class="col-md-8 col-title">
+ 				<h1><%=@po.id%> Details</h1>
+ 			</div>
+ 			<div class="col-md-3">
+				<br>
+ 				<br><%=link_to("Delete", {:action => 'delete', :id => @po.id})%></a>
+ 			</div>
+			
+		</div>
+		
+		
+		<div class ="row row-2 text-center">
+  			<table class="table table-bordered table-striped text-center" summary="Tasks List">
+				<tr class="header">
+					<th>PO ID</th>
+					<th>Description</th>
+					<th>Line Items</th>
+					<th>Team Members</th>
+				</tr>
+				
+				<tr>
+					<td><%=@po.id%></td>
+					<td>Short Description</td>
+					<td><%=@po.project_id%></td>
+					<td>Line Item Count</td>
+				</tr>	
+			</table>
+		</div>
+		
+		
+	
+
+	<div class="col-md-1 col-side">
+	</div>
+	
+	<div class ="row row-3 text-center">
+		<h1>Line Item Description and Tracking</h1>
+	</div>
+
+	</div>
+
+</div>

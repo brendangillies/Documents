@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.notice {
+	background: lightgreen;
+}
+
 h4 {
 	color: green;
 }
@@ -37,6 +41,10 @@ th {
 	padding: 15px;
 }
 
+.col-dashboard-right {
+	padding: 50px;
+}
+
 
 .row-4 {
 	background: green;
@@ -52,4 +60,8 @@ th {
 .navbar-brand {
 	height: 1vw;
 }
+
+
+
+
 

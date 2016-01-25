@@ -1,15 +1,15 @@
 
 <ul class="nav nav-tabs nav-stacked nav-side" role="tablist">
 	
-	<li><a href="/projects/dashboard">Dashboard</a></li>
+	<li><%=link_to('Dashboard', {:controller => 'projects' ,:action => 'dashboard'})%></li>
 	
 	<li class="dropdown">
 	    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 	      Tasks <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-	      <li><a href="/tasks/index">Outstanding</a></li>
-		  <li><a href="/tasks/index">Index</a></li>
+	      <li><a href="#">Outstanding</a></li>
+		  <li><a href="#">Index</a></li>
 		  <li><a href="#">Stats</a></li>
 	    </ul>
 	  </li>
@@ -21,8 +21,8 @@
 	      Purchases <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-	      <li><a href="/master_pos/index">Index</a></li>
-		  <li><a href="/items/new">New</a></li>
+	      <li><%=link_to('Index', {:controller => 'master_pos' ,:action => 'index'})%></li>
+		  <li><%=link_to('New', {:controller => 'master_pos' ,:action => 'new'})%></li>
 		  <li><a href="#">Search</a></li>
 	    </ul>
 	  </li>
