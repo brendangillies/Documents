@@ -2,17 +2,16 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-<<<<<<< HEAD
-gem 'rails', '4.2.5'
-=======
 gem 'rails'
->>>>>>> 0f414344718505b29afd6f2a2e6329864f3811b4
 
 #sql database
 gem 'mysql2'
 
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.5'
+
+#font-aweomse
+gem 'font-awesome-sass'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -57,5 +56,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'email_validator'
+  gem 'bcrypt'
 end
 

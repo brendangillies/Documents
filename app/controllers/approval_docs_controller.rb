@@ -58,7 +58,7 @@ class ApprovalDocsController < ApplicationController
 
   # DELETE /approval_docs/1
   # DELETE /approval_docs/1.json
-  def destroy
+  def destroy #TODO add prompt to user to ask if they're sure 
     @approval_doc.destroy
     respond_to do |format|
       format.html { redirect_to approval_docs_url, notice: 'Approval doc was successfully destroyed.' }
@@ -74,7 +74,6 @@ class ApprovalDocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def approval_doc_params
-      #params[:approval_doc]
-      params.require(:approval_doc).permit(:name, :priority_code, :required_by, :doc_type_code, :desc)
+      params.require(:approval_doc).permit(:name)
     end
 end

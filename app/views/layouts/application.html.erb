@@ -16,15 +16,16 @@
 </div>
 
 
-	<% if !flash[:notice].blank? %>
-		<div class="notice">
-			<%= flash[:notice]%>
-		</div>
-	<%end%>
-
-
 <body>
-<%= yield %>
+	<div class="container">
+	<div class="row">
+	<%= render(:partial => '/landing/banner') %></div>
+		<% flash.each do |message_type, message|%>
+			<div class="alert alert-<%= message_type %>"<%= message %></div>
+		<% end %>
+		<%= yield %>
+		<%= debug(params) if Rails.env.development? %>
+	</div>
 </body>
 
 

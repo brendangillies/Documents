@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103182617) do
+ActiveRecord::Schema.define(version: 20160126035804) do
 
   create_table "approval_comments", force: :cascade do |t|
     t.integer  "approval_doc_id", limit: 4
@@ -145,18 +145,21 @@ ActiveRecord::Schema.define(version: 20160103182617) do
   add_index "user_company_roles", ["role_code"], name: "comp_role_role_idx", using: :btree
   add_index "user_company_roles", ["user_name", "company_id", "role_code"], name: "company_role_unique", unique: true, using: :btree
 
-  create_table "users", force: :cascade do |t|
-    t.string  "first_name", limit: 45
-    t.string  "last_name",  limit: 45
-    t.string  "email",      limit: 75, default: ""
-    t.string  "user_name",  limit: 45
-    t.integer "company_id", limit: 4
-    t.integer "role_code",  limit: 4
-    t.binary  "is_active",  limit: 1
+  create_table "user_config", force: :cascade do |t|
+    t.string  "company",     limit: 255
+    t.string  "role",        limit: 255
+    t.integer "customer_id", limit: 4
   end
 
-  add_index "users", ["company_id"], name: "company_po_idx", using: :btree
-  add_index "users", ["role_code"], name: "role_code_idx", using: :btree
-  add_index "users", ["user_name"], name: "user_name_idx", using: :btree
+  create_table "users", force: :cascade do |t|
+    t.string "first_name",      limit: 45
+    t.string "last_name",       limit: 45
+    t.string "email",           limit: 75,  default: ""
+    t.string "username",        limit: 45
+    t.string "password_digest", limit: 255
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["username"], name: "user_name_idx", using: :btree
 
 end
