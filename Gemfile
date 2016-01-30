@@ -3,10 +3,17 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 <<<<<<< HEAD
+<<<<<<< HEAD
 gem 'rails'
 
 #sql database
 gem 'mysql2'
+=======
+gem 'rails', '4.2.0'
+
+#sql database
+gem 'mysql2', '0.4.2'
+>>>>>>> benreeves
 =======
 gem 'rails', '4.2.0'
 
@@ -32,7 +39,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 <<<<<<< HEAD
+<<<<<<< HEAD
 gem 'coffee-script-source'
+=======
+
+>>>>>>> benreeves
 =======
 
 >>>>>>> benreeves
