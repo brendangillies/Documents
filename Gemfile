@@ -2,10 +2,17 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+<<<<<<< HEAD
 gem 'rails'
 
 #sql database
 gem 'mysql2'
+=======
+gem 'rails', '4.2.0'
+
+#sql database
+gem 'mysql2', '0.4.2'
+>>>>>>> benreeves
 
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -24,7 +31,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+<<<<<<< HEAD
 gem 'coffee-script-source'
+=======
+
+>>>>>>> benreeves
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -43,7 +54,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
- gem 'puma' 
+gem 'puma' 
 
 gem 'will_paginate', '3.0.3'
 
