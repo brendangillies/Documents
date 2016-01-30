@@ -1,15 +1,14 @@
 <div class = "row row-2 row-heading text-center">
-	<div class="col-md-3 col-side">
-	  		<%= render(:partial => '/projects/sidenavigation') %>
+	<div class="col-md-1 col-side">
 	</div>
 
 
 	<div class="col-md-8">
 		
 		<div class ="row text-center">
- 		
+
  			<div class="col-md-9 col-title">
- 				<h1>Your Projects</h1>
+ 				<h1>Project List</h1>
  			</div>
  			<div class="col-md-3">
 				<br>
@@ -20,22 +19,29 @@
 		
 		
 		<div class ="row row-2 text-center">
+			<% if !flash[:notice].blank? %>
+				<div class="notice">
+					<h2><%= flash[:notice]%></h2>
+				</div>
+			<%end%>
   			<table class="table table-bordered table-striped text-center" summary="Tasks List">
 				<tr class="header">
+					<th>Project Number</th>
 					<th>Project Name</th>
 					<th>Is Active</th>
-					<th>Description</th>
 					<th>Total Purchases</th>
-					<th>Details</th>
+					<th>Team Members</th>
+					<th>Show</th>
 				</tr>
 				<% i = 0 %>	
 				<% @projects.each do |project|%>	
 				<tr>
-					<td><%=project.project_name%></td>
+					<td><%=project.id%></td>
+					<td><%=link_to(project.project_name, {:action => 'dashboard', :id => project.id}, :class => 'action dashboard')%></td>
 					<td><%=project.is_active%></td>
-					<td>Details</td>
-					<td>X</td>
-					<td><a href="#">Details</a></td>
+					<td><%=project.master_pos.count%></td>
+					<td><%=project.master_pos.first%></td>
+					<td><%=link_to("Details", {:action => 'show', :id => project.id}, :class => 'action show')%></td>
 					</tr>	
 					<% end %>
 			</table>

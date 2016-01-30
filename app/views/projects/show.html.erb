@@ -1,0 +1,50 @@
+<div class = "row row-2 row-heading text-center">
+	<div class="col-md-3 col-side">
+	  		<%= render(:partial => '/projects/sidenavigation') %>
+	</div>
+
+
+	<div class="col-md-8">
+		
+		<div class ="row text-center">
+ 		
+			<div class="col-md-1">
+				<br>
+				<br><a href="/projects/index"><< Back</a>
+			</div>
+		
+ 			<div class="col-md-8 col-title">
+ 				<h1><%=@project.project_name%> Details</h1>
+ 			</div>
+ 			<div class="col-md-3">
+				<br>
+ 				<br><%=link_to("Delete Project", {:action => 'delete', :id => @project.id}, :class => 'action delete')%>
+ 			</div>
+			
+		</div>
+		
+		
+		<div class ="row row-2 text-center">
+  			<table class="table table-bordered table-striped text-center" summary="Tasks List">
+				<tr class="header">
+					<th>Project Name</th>
+					<th>Is Active</th>
+					<th>Total Purchases</th>
+					<th>Team Members</th>
+				</tr>
+				
+				<tr>
+					<td><%=@project.project_name%></td>
+					<td><%=@project.is_active%></td>
+					<td><%=@project.master_pos.count%></td>
+					<td><%=@project.master_pos.first%></td>
+				</tr>	
+			</table>
+		</div>
+
+	<div class="col-md-1 col-side">
+	</div>
+
+	</div>
+
+</div>

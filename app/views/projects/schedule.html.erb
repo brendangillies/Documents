@@ -5,10 +5,46 @@
 
 <div class="row row-2 text-center">
 	<div class="col-md-3">
-	  		<%= render(:partial => '/project/sidenavigation') %>
+	  		<%= render(:partial => '/projects/sidenavigation') %>
 	</div>
 	
-	<div>
-		<%="Schedule Graphic"%>
+	<div class="col-md-9">
+		
+		<div class ="row text-center">
+			<div class="col-md-9 col-title">
+				<h1>Schedule</h1>
+			</div>
+			<div class="col-md-3">
+				<br><%=link_to("Change Project", {:action => 'index', :id => false}, :class => 'action index')%></a>
+				<br><a href="/users/index">Manage Profile</a>
+			</div>
+		</div>
+		
+		<div class="row row-schedule">
+			<div class="col-md-9 col-schedule">
+				<%= timeline [
+				  ["Valves-Large", "2015-04-21", "2016-03-03"],
+				  ["Pipe-Large", "2015-04-25", "2016-03-15"],
+				  ["Pumps-Large", "2015-04-29", "2016-03-30"],
+				  
+				  ["Valves-Medium", "2015-04-29", "2016-04-03"],
+				  ["Pipe-Medium", "2015-05-15", "2016-04-15"],
+				  ["Pumps-Medium", "2015-05-25", "2016-04-30"],
+				  
+				  ["Valves-Small", "2015-04-21", "2016-03-03"],
+				  ["Pipe-Small", "2015-04-25", "2016-03-15"],
+				  ["Pumps-Small", "2015-04-29", "2016-09-30"]
+				] %>
+			</div>
+			<div class="col-md-3">
+			</div>
+			
+		</div>
 	</div>
+	
 </div>
+
+
+
+<hr/>
+<%= params.inspect %>

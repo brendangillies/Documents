@@ -12,26 +12,40 @@
 		
 		<div class ="row text-center">
 			<div class="col-md-9 col-title">
-				<h1>Project Dashboard</h1>
+				<h1><%=@project.project_name%> Dashboard</h1>
 			</div>
 			<div class="col-md-3">
-				<br><a href="index">Change Project</a>
+				<br><%=link_to("Change Project", {:action => 'index', :id => false}, :class => 'action index')%></a>
 				<br><a href="/users/index">Manage Profile</a>
 			</div>
 		</div>
 		
 		
 		<div class ="row row-3 text-center">
-				<h2>You have 1<%=@tasks%> high priority tasks. </h2>
-				<h3>You have 1<%=@tasks%> remaining this week</h3>
+			<div class="col-md-6">
+				<h2>You have X high priority tasks. </h2>
+				<h3>You have X remaining this week</h3>
 			  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
+			</div>
+			<div class="col-md-6 col-dashboard-right">
+				<%= pie_chart Project.group(:project_name).count %>
+			</div>
+				
 		</div>
 
 		<div class ="row row-4 text-center">
-			<h2>Your team is on track.</h2>
-			<h3>5 outstanding tasks due this week</h3>
-		  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
-			<a class="btn btn-primary btn-med btn-1 " href="schedule" role="button">Schedule</a>
+			<div class="col-md-6">
+				<h2>Your team is on track.</h2>
+				<h3>5 outstanding tasks due this week</h3>
+			  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
+				<a class="btn btn-primary btn-med btn-1 " href="schedule" role="button">Schedule</a>
+			</div>
+			<div class="col-md-6">
+				
+			</div>
+			
+			
+			
   		</div>
 		
 		<div class ="row row-3 text-center">
@@ -44,5 +58,8 @@
 	</div>
 
 </div>
+
+<hr/>
+<%= params.inspect %>
 
 

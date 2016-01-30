@@ -1,16 +1,28 @@
 
-<div class = "row text-center row-2">
+<div class = "row row-heading text-center row-2">
 	
 	
   	  <div class="col-md-2"> 
-		  <%=render(:partial => '/projects/sidenavigation')%>
 	  </div>
   
   
   	<div class="col-md-8">
 
 		<div class="row row-1">
-	  		<h1>Create New PO</h1>
+			<div class ="row text-center">
+				<div class="col-md-3">
+					<%=link_to("<< Back", {:action => 'index', :po_id => @po.po_id})%>
+				</div>
+				
+				
+				<div class="col-md-6 col-title">
+					<h1>Create new PO for <%=@project.project_name%></h1>
+				</div>
+				<div class="col-md-3">
+					<br><a href="index">Change Project</a>
+					<br><a href="#">New Vendor</a>
+				</div>
+			</div>
 		</div>
 		
 		<div class="row row-2">
@@ -27,12 +39,8 @@
 		          <td><%= f.text_field(:po_id) %></td>
 		        </tr>
 		        <tr>
-		          <th>Project ID</th>
-		          <td><%= f.text_field(:project_id) %></td>
-		        </tr>
-		        <tr>
 		          <th>Company ID</th>
-		          <td><%= f.text_field(:project_id) %></td>
+		          <td><%= f.text_field(:company_id) %></td>
 		        </tr>
 		      </table>
 

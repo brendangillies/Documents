@@ -11,21 +11,27 @@
 	<div class="col-md-8">
 		
 		<div class ="row text-center">
+			
+			
 			<div class="col-md-9 col-title">
-				<h1>PO List</h1>
+				<h1>PO List for <%=@project.project_name%></h1>
 			</div>
 			<div class="col-md-3">
-				<br><a href="index">Change Project</a>
-				<br><a href="/master_pos/new">Create New PO</a>
+				<br><%=link_to('Change Project', {:controller => 'projects' ,:action => 'index'})%></a>
+				<br><%=link_to('Create PO', {:controller => 'master_pos' ,:action => 'new'})%></a>
 			</div>
 		</div>
 		
-		
+		<% if !flash[:notice].blank? %>
+			<div class="notice">
+				<h2><%= flash[:notice]%></h2>
+			</div>
+		<%end%>
+			
 		<div class ="row row-2 text-center">
 		  <table class="table table-bordered text-center" summary="Tasks List">
 			<tr class="header">
 				<th>PO ID</th>
-				<th>Project ID</th>
 				<th>Vendor ID</th>
 				<th>Line Items</th>
 				<th>Delivery Date</th>
@@ -35,12 +41,10 @@
 				<% @pos.each do |po|%>
 			<tr>
 				<td><%=po.po_id%></td>
-				<td><%=po.project_id%></td>
 				<td><%=po.company_id%></td>
 				<td>Line item count</td>
 				<td>Delivery Date</td>
-			
-				<td><a href="#">SHOW</a></td>
+				<td><%=link_to("Show", {:action => 'show', :id => po.id}, :class => 'action show')%></td>
 			</tr>	
 			<% end %>
 			</table>
