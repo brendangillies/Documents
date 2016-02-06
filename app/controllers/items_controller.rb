@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
   end
 
   def create 
-<<<<<<< HEAD
    if(params.has_key?(:master_po_id))
    @po = MasterPo.find(params[:master_po_id])
    else @po = MasterPo.find(1)
@@ -25,14 +24,12 @@ class ItemsController < ApplicationController
     if @item.save 
       format.html { redirect_to @item, notice: 'Line Item was successfully created.' }
       format.json { render :show, status: :created, location: @item }
-=======
     @po = MasterPo.new(po_params)
     #@item = Item.new(po_params) I don't know why we need to create a child just because we're creating the parent. 
     #you should be able to create a blank PO and add items later
     if @po.save 
       #&& @item.save 
       redirect_to(:action => 'index')
->>>>>>> benreeves
     else
       # IF save fails, redisply the form so user can fix problems.
 	format.html { render :new }
