@@ -1,31 +1,3 @@
-<h1>Listing approval_docs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @approval_docs.each do |approval_doc| %>
-      <tr>
-        <td><%= link_to 'Show', approval_doc %></td>
-        <td><%= link_to 'Edit', edit_approval_doc_path(approval_doc) %></td>
-        <td><%= link_to 'Destroy', approval_doc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Approval doc', new_approval_doc_path %>
-json.array!(@approval_docs) do |approval_doc|
-  json.extract! approval_doc, :id
-  json.url approval_doc_url(approval_doc, format: :json)
-end
-
 <h1>New approval_doc</h1>
 
 <%= render 'form' %>
@@ -57,8 +29,7 @@ end
 <h2>Add a Comment:</h2>
 <%= form_for([@approval_doc, @approval_doc.approval_comments.build]) do |f| %>
 <p>
-	<%= f.label :user_id %><br/>
-	<%= f.text_field :user_id %><br/>
+	<%= f.label :username %><br/>
 </p>
 <p>
 	<%= f.label :body %><br/>
@@ -69,44 +40,3 @@ end
 </p>
 <% end %>
 
-<%= link_to 'Edit', edit_approval_doc_path(@approval_doc) %>
-<%= link_to 'Back', approval_docs_path %>
-json.extract! @approval_doc, :id, :created_at, :updated_at
-<%= form_for(@approval_doc) do |f| %>
-  <% if @approval_doc.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@approval_doc.errors.count, "error") %> prohibited this approval_doc from being saved:</h2>
-
-      <ul>
-      <% @approval_doc.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label "Due Date" %><br>
-    <%= f.date_field :required_by %>
-  </div>  
-   <div class="field">
-    <%= f.label "Priority" %><br>
-    <%= f.text_field :priority_code %>
-  </div> 
-   <div class="field">
-    <%= f.label "Document Type" %><br>
-    <%= f.number_field(:doc_type_code, in: 1.0..20.0, step: 1) %>
-  </div> 
-   <div class="field">
-    <%= f.label "Summary/Description" %><br>
-    <%= f.text_area :desc %>
-  </div>   
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

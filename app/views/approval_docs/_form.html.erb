@@ -21,11 +21,11 @@
   </div>  
    <div class="field">
     <%= f.label "Priority" %><br>
-    <%= f.text_field :priority_code %>
+    <%= f.text_field :priority %>
   </div> 
    <div class="field">
     <%= f.label "Document Type" %><br>
-    <%= f.number_field(:doc_type_code, in: 1.0..20.0, step: 1) %>
+    <%= f.number_field(:doc_type, in: 1.0..20.0, step: 1) %>
   </div> 
    <div class="field">
     <%= f.label "Summary/Description" %><br>

@@ -3,7 +3,5 @@ class ApprovalDoc < ActiveRecord::Base
   has_many :tasks
   has_many :approval_comments
   belongs_to :item
-  validates :priority_code, presence: true
-  validates :doc_type_code, presence: true
-  validates :desc, presence: true
+  validates :doc_type, presence: true
 end

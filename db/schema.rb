@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126035804) do
+ActiveRecord::Schema.define(version: 20160131223510) do
 
   create_table "approval_comments", force: :cascade do |t|
     t.integer  "approval_doc_id", limit: 4
@@ -25,22 +25,22 @@ ActiveRecord::Schema.define(version: 20160126035804) do
   add_index "approval_comments", ["user_id"], name: "index_approval_comments_on_user_id", using: :btree
 
   create_table "approval_docs", force: :cascade do |t|
-    t.integer  "item_id",       limit: 4
-    t.binary   "is_required",   limit: 1
-    t.integer  "status_code",   limit: 4
-    t.string   "assigned_to",   limit: 45
+    t.integer  "item_id",     limit: 4
+    t.binary   "is_required", limit: 1
+    t.integer  "status",      limit: 4
+    t.string   "assigned_to", limit: 45
     t.datetime "required_by"
-    t.integer  "priority_code", limit: 4
-    t.integer  "doc_type_code", limit: 4
-    t.string   "desc",          limit: 140
-    t.string   "name",          limit: 255
+    t.integer  "priority",    limit: 4
+    t.integer  "doc_type",    limit: 4
+    t.string   "desc",        limit: 140
+    t.string   "name",        limit: 255
   end
 
   add_index "approval_docs", ["assigned_to"], name: "app_doc_assigned_to_idx", using: :btree
-  add_index "approval_docs", ["doc_type_code"], name: "app_doc_type_cd_idx", using: :btree
+  add_index "approval_docs", ["doc_type"], name: "app_doc_type_cd_idx", using: :btree
   add_index "approval_docs", ["item_id"], name: "app_doc_item_id_idx", using: :btree
-  add_index "approval_docs", ["priority_code"], name: "app_doc_priotity_cd_idx", using: :btree
-  add_index "approval_docs", ["status_code"], name: "app_doc_status_cd_idx", using: :btree
+  add_index "approval_docs", ["priority"], name: "app_doc_priotity_cd_idx", using: :btree
+  add_index "approval_docs", ["status"], name: "app_doc_status_cd_idx", using: :btree
 
   create_table "approval_hists", force: :cascade do |t|
     t.integer  "approval_doc_id", limit: 4
@@ -56,13 +56,14 @@ ActiveRecord::Schema.define(version: 20160126035804) do
     t.string "decode_value", limit: 45
   end
 
-  create_table "company_list", primary_key: "company_id", force: :cascade do |t|
-    t.string "comapny_name", limit: 45
+  create_table "company", force: :cascade do |t|
+    t.string "name", limit: 45
+    t.string "type", limit: 255
   end
 
-  add_index "company_list", ["comapny_name"], name: "comapny_name_UNIQUE", unique: true, using: :btree
+  add_index "company", ["name"], name: "comapny_name_UNIQUE", unique: true, using: :btree
 
-  create_table "items", primary_key: "item_id", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.integer  "po_id",            limit: 4
     t.string   "line_item_num",    limit: 45
     t.string   "line_item_desc",   limit: 45
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160126035804) do
   add_index "items", ["po_id"], name: "po_master_item_link_idx", using: :btree
   add_index "items", ["status_code"], name: "po_item_codes_idx", using: :btree
 
-  create_table "master_pos", primary_key: "po_id", force: :cascade do |t|
+  create_table "master_pos", force: :cascade do |t|
     t.string  "po_num",       limit: 45
     t.date    "created_date"
     t.integer "project_id",   limit: 4
@@ -102,12 +103,16 @@ ActiveRecord::Schema.define(version: 20160126035804) do
   add_index "project_po_list", ["po_id"], name: "proj_po_link1_idx", using: :btree
   add_index "project_po_list", ["project_id"], name: "proj_link_idx", using: :btree
 
-  create_table "projects", primary_key: "project_id", force: :cascade do |t|
-    t.string "project_name", limit: 45
-    t.binary "is_active",    limit: 1,  default: "0"
+  create_table "projects", force: :cascade do |t|
+    t.string  "project",     limit: 45
+    t.binary  "is_active",   limit: 1,  default: "0"
+    t.date    "date_opened"
+    t.date    "date_closed"
+    t.integer "company_id",  limit: 4
   end
 
-  add_index "projects", ["project_name"], name: "project_name_UNIQUE", unique: true, using: :btree
+  add_index "projects", ["company_id"], name: "index_projects_on_company_id", using: :btree
+  add_index "projects", ["project"], name: "project_name_UNIQUE", unique: true, using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.integer "position",    limit: 4
