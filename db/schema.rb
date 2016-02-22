@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131223510) do
+ActiveRecord::Schema.define(version: 20160208025034) do
 
   create_table "approval_comments", force: :cascade do |t|
     t.integer  "approval_doc_id", limit: 4
@@ -56,12 +56,11 @@ ActiveRecord::Schema.define(version: 20160131223510) do
     t.string "decode_value", limit: 45
   end
 
-  create_table "company", force: :cascade do |t|
-    t.string "name", limit: 45
-    t.string "type", limit: 255
+  create_table "companies", force: :cascade do |t|
+    t.string "name",         limit: 45
+    t.string "company_type", limit: 255
+    t.string "account",      limit: 255
   end
-
-  add_index "company", ["name"], name: "comapny_name_UNIQUE", unique: true, using: :btree
 
   create_table "items", force: :cascade do |t|
     t.integer  "po_id",            limit: 4
@@ -162,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160131223510) do
     t.string "email",           limit: 75,  default: ""
     t.string "username",        limit: 45
     t.string "password_digest", limit: 255
+    t.string "remember_digest", limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -20,10 +20,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 													 first_name: "User", last_name: "McYeezSteez",
 													password: "password123!", 
 													password_confirmation: "password123!"}
-	j	end
+		end
 											
 		follow_redirect!
 		assert_template 'users/show'
+		assert is_logged_in?
 	end
 																											
 end

@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   def create 
     @user = User.create(user_params)
     if @user.save
-      flash[:notice] = "Registered successfully"
+      flash[:success] = "Registered successfully"
+			log_in @user
 			redirect_to @user 
     else
       # IF save fails, redisply the form so user can fix problems.
