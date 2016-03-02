@@ -1,23 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
-/* forms */
-
-.checkbox {
-	margin-top: -10px;
-	margin-bottom: 10px;
-	span {
-		margin-left: 20px;
-		font-weight: normal;
-	}
-}
-
-#session_remember_me {
-	width: auto;
-	margin-left: 0;
-}
-
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
@@ -49,4 +32,19 @@ $gray-medium-light: #eaeaea;
 	.form-control {
 		color: $state-danger-text;
 	}
+
 }
+.checkbox {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	span {
+		margin-left: 20px;
+		font-weight: normal;
+	}
+}
+
+#session_remember_me {
+	width: auto;
+	margin-left: 0;
+}
+

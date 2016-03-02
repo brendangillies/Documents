@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208025034) do
+ActiveRecord::Schema.define(version: 20160301031416) do
 
   create_table "approval_comments", force: :cascade do |t|
     t.integer  "approval_doc_id", limit: 4
@@ -63,19 +63,16 @@ ActiveRecord::Schema.define(version: 20160208025034) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer  "po_id",            limit: 4
+    t.integer  "master_po_id",     limit: 4
     t.string   "line_item_num",    limit: 45
     t.string   "line_item_desc",   limit: 45
-    t.binary   "docs_required",    limit: 1,                           default: "0"
-    t.decimal  "price",                       precision: 10, scale: 2
-    t.integer  "status_code",      limit: 4
+    t.integer  "docs_required",    limit: 4,                            default: 48
+    t.decimal  "price",                        precision: 10, scale: 2
+    t.string   "status",           limit: 255
     t.datetime "approved_by_date"
-    t.integer  "doc_list_id",      limit: 4
   end
 
-  add_index "items", ["line_item_num"], name: "line_item_num_UNIQUE", unique: true, using: :btree
-  add_index "items", ["po_id"], name: "po_master_item_link_idx", using: :btree
-  add_index "items", ["status_code"], name: "po_item_codes_idx", using: :btree
+  add_index "items", ["master_po_id"], name: "po_master_item_link_idx", using: :btree
 
   create_table "master_pos", force: :cascade do |t|
     t.string  "po_num",       limit: 45
@@ -88,19 +85,19 @@ ActiveRecord::Schema.define(version: 20160208025034) do
   add_index "master_pos", ["company_id"], name: "company_po_idx", using: :btree
   add_index "master_pos", ["project_id"], name: "po_project_fk_idx", using: :btree
 
-  create_table "project_po_list", force: :cascade do |t|
-    t.integer  "project_id",      limit: 4
-    t.integer  "po_id",           limit: 4
-    t.string   "project_name",    limit: 45
-    t.string   "po_num",          limit: 45
-    t.binary   "is_approved",     limit: 1
-    t.datetime "approve_by_date"
+  create_table "project_po_list", id: false, force: :cascade do |t|
+    t.integer  "project_id",    limit: 4
+    t.integer  "master_po_id",  limit: 4
     t.datetime "approval_date"
-    t.string   "approved_by",     limit: 45
   end
 
-  add_index "project_po_list", ["po_id"], name: "proj_po_link1_idx", using: :btree
+  add_index "project_po_list", ["master_po_id"], name: "proj_po_link1_idx", using: :btree
   add_index "project_po_list", ["project_id"], name: "proj_link_idx", using: :btree
+
+  create_table "project_users", id: false, force: :cascade do |t|
+    t.integer "project_id", limit: 4
+    t.integer "user_id",    limit: 4
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string  "project",     limit: 45
@@ -156,12 +153,13 @@ ActiveRecord::Schema.define(version: 20160208025034) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name",      limit: 45
-    t.string "last_name",       limit: 45
-    t.string "email",           limit: 75,  default: ""
-    t.string "username",        limit: 45
-    t.string "password_digest", limit: 255
-    t.string "remember_digest", limit: 255
+    t.string  "first_name",      limit: 45
+    t.string  "last_name",       limit: 45
+    t.string  "email",           limit: 75,  default: ""
+    t.string  "username",        limit: 45
+    t.string  "password_digest", limit: 255
+    t.string  "remember_digest", limit: 255
+    t.integer "current_project", limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

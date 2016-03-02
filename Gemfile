@@ -50,6 +50,9 @@ gem 'puma'
 
 gem 'will_paginate', '3.0.3'
 
+gem 'best_in_place'
+
+gem 'jquery-ui-rails'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
@@ -64,4 +67,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
 	gem 'web-console'
+  gem 'rails_layout'
+	gem 'haml-rails'
 end

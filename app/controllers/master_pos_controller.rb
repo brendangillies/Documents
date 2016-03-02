@@ -1,7 +1,14 @@
 class MasterPosController < ApplicationController
   
   def index
-    @pos = MasterPo.all
+		if params.has_key?(:project_id)
+			@project = Project.find(params[:project_id])
+		elsif current_project.nil?
+			@project = curent_project
+		else
+			flash[:notice] = "No current project selected"
+		end
+    @pos = @project.master_pos.all
   end
   
   def show
@@ -9,17 +16,19 @@ class MasterPosController < ApplicationController
   end
   
   def new
-    @po = MasterPo.new()
+		@project = Project.find(params[:project_id])
+    @po = @project.master_pos.new()
   end
   
   def create 
+		@project = Project.find(params[:project_id])
     #Instantiate a new object using form parameters
-    @po = MasterPo.new(po_params)
+    @po = @project.master_pos.new(po_params)
     # Save the object 
     if @po.save
     # If save succeeds, redirect to the index action 
     flash[:notice] = "PO created successfully"
-    redirect_to(:action => 'index', :id => @project.id)
+    redirect_to(:action => 'index', :project_id => @project.id)
     else
     # If save fails, redisplay the form so user can fix problems
     flash[:notice] = "Something was missing"
@@ -39,16 +48,11 @@ class MasterPosController < ApplicationController
   
   
   
-  
-  
   private 
     def po_params
       # same as using "params[:subject]", except that it: 
       # - raises an error if :suject is not present 
       # - allows listed attributes to be mass-assigned
-      params.require(:master_po).permit(:po_id, :project_id, :company_id, @project.id)
+      params.require(:master_po).permit(:project_id, :company_id, :po_num, :is_active)
     end 
-  
-  
-  
 end

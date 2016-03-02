@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
   def show 
-    @item = Item.find(1)
+    @item = Item.find(params[:id])
   end
   
   def index
-    @pos = MasterPo.order("created_date ASC")
-    @items = Item.order("line_item_id")
+    @po = MasterPo.find(params[:master_po_id])
+		@project = Project.find(@po.project_id)
+    @items = @po.items
   end
   
   def new
@@ -13,12 +14,13 @@ class ItemsController < ApplicationController
   end
 
   def create 
+		#temp code
    if(params.has_key?(:master_po_id))
    @po = MasterPo.find(params[:master_po_id])
    else @po = MasterPo.find(1)
    end
    #TODO add code which will prompt the user to create a PO is one does not exist
-   @item = @po.items.create(item_params)
+   @item = @po.items.build(item_params)
 
    respond_to do |format|
     if @item.save 
@@ -27,28 +29,28 @@ class ItemsController < ApplicationController
     @po = MasterPo.new(po_params)
     #@item = Item.new(po_params) I don't know why we need to create a child just because we're creating the parent. 
     #you should be able to create a blank PO and add items later
-    if @po.save 
-      #&& @item.save 
-      redirect_to(:action => 'index')
     else
       # IF save fails, redisply the form so user can fix problems.
 	format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
     end
   end
-  end
+	end
 
   def update
-   respond_to do |format|
-    if @item.update(item_params) 
-      format.html { redirect_to @item, notice: 'Line Item was successfully updated.' }
-      format.json { render :show, status: :ok, location: @item }
+		if(params.has_key?(:id))
+			 @item = Item.find(params[:id])
+		end
+    if @item.update_attributes(item_params)
+			if params[:field].present? # means that the action is used via `best_in_place`
+    		render json: { params[:field].to_sym => @item.send(params[:field]) }
+ 			else
+   			 respond_with items
+		  end
     else
       # IF save fails, redisply the form so user can fix problems.
-	format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+      render json: @item.errors, status: :unprocessable_entity 
     end
-   end
   end
 
   private 
@@ -56,8 +58,8 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
 
-    def po_params 
-     params.require(:item).permit(:company_id, :project_id, :master_po_id)
+    def item_params 
+     params.require(:item).permit(:master_po_id, :line_item_num, :line_item_desc, :docs_required, :price, :status_code,
+																 :approved_by_date)
     end
-
-end
+end	

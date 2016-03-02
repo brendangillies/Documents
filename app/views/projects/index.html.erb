@@ -31,17 +31,18 @@
 					<th>Is Active</th>
 					<th>Total Purchases</th>
 					<th>Team Members</th>
-					<th>Show</th>
+					<th>Options</th>
 				</tr>
 				<% i = 0 %>	
 				<% @projects.each do |project|%>	
 				<tr>
 					<td><%=project.id%></td>
-					<td><%=link_to(project.project_name, {:action => 'dashboard', :id => project.id}, :class => 'action dashboard')%></td>
+					<td><%=link_to(project.project, {:action => 'dashboard', :id => project.id}, :class => 'action dashboard')%></td>
 					<td><%=project.is_active%></td>
 					<td><%=project.master_pos.count%></td>
 					<td><%=project.master_pos.first%></td>
-					<td><%=link_to("Details", {:action => 'show', :id => project.id}, :class => 'action show')%></td>
+					<td><%=link_to("Details", {:action => 'show', :id => project.id}, :class => 'action show')%>
+					<%=button_to("Set as project", {:action => 'dashboard', :id => project.id}, :class => 'action dashboard')%></td>
 					</tr>	
 					<% end %>
 			</table>

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_and_belongs_to_many :tasks
   has_many :approval_comments
+	has_many :project_users
+	has_many :projects, :through => :project_users
   validates :first_name, presence:true, length: {maximum: 45}
   validates :last_name, presence:true, length: {maximum: 45}
   validates :email, presence:true, length: {maximum: 75}, email: true, uniqueness: true
@@ -36,5 +38,10 @@ class User < ActiveRecord::Base
 
 		def forget
 			update_attribute(:remember_digest, nil)
+		end
+
+		def set_current_project(project_id)
+			#self.current_project = project_id
+			update_attribute(:current_project, project_id)
 		end
 end

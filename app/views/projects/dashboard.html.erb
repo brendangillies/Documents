@@ -1,22 +1,22 @@
-<div class="row row-1">
-	<%= render(:partial => '/landing/banner') %>  
-</div>
-
 <div class = "row row-2 text-center">
-	<div class="col-md-3 col-side">
-	  		<%= render(:partial => 'sidenavigation') %>
+	<div class="col-md-2 col-side">
+		<%= render partial: 'sidenavigation', locals: {project:  @project} %>
 	</div>
 
 
-	<div class="col-md-9">
+	<div class="col-md-10">
 		
 		<div class ="row text-center">
 			<div class="col-md-9 col-title">
-				<h1><%=@project.project_name%> Dashboard</h1>
+				<% if !@project.nil? %>
+				<h1><%=@project.project%> Dashboard</h1>
+			<% else %>
+				<h1><%="My"%> Dashboard</h1>
+			<% end %>
 			</div>
 			<div class="col-md-3">
 				<br><%=link_to("Change Project", {:action => 'index', :id => false}, :class => 'action index')%></a>
-				<br><a href="/users/index">Manage Profile</a>
+				<br><a href="/users/index">Manage Team</a>
 			</div>
 		</div>
 		
@@ -28,7 +28,7 @@
 			  	<a class="btn btn-primary btn-med btn-1 " href="/tasks/index" role="button">See all</a><%=" "%>
 			</div>
 			<div class="col-md-6 col-dashboard-right">
-				<%= pie_chart Project.group(:project_name).count %>
+				<%= pie_chart Project.group(:project).count %>
 			</div>
 				
 		</div>

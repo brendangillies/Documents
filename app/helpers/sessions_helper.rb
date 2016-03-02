@@ -42,4 +42,9 @@ module SessionsHelper
 		cookies.delete(:user_id)
 		cookies.delete(:remember_token)
 	end
+
+	def current_project(user = current_user)
+		@project = Project.find_by(id: user[:current_project])
+	end
+
 end

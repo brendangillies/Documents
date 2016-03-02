@@ -1,14 +1,9 @@
-<div class="row row-1">
-	<%= render(:partial => '/landing/banner') %>  
-</div>
-
-
 <div class="row row-2 text-center">
-	<div class="col-md-3">
-	  		<%= render(:partial => '/projects/sidenavigation') %>
+	<div class="col-md-2">
+		<%= render partial: 'sidenavigation', locals: {project:  @project} %>
 	</div>
 	
-	<div class="col-md-9">
+	<div class="col-md-10">
 		
 		<div class ="row text-center">
 			<div class="col-md-9 col-title">

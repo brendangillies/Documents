@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
   <title>VendorDocs</title>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700,300' rel='stylesheet' type='text/css'>
-  
-</head>
-
-<div class="row row-banner">
-	<%= render(:partial => '/landing/banner') %>  
-</div>
-
-
-<body>
-	<div class="container">
-		<% flash.each do |message_type, message|%>
-			<div class="alert alert-<%= message_type %>"<%= message %></div>
-		<% end %>
-		<%= yield %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Vendor Docs" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Vendor Docs" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
 		<%= debug(params) if Rails.env.development? %>
-	</div>
-	</div>
-</body>
-
-
-<div class="row row-footer text-center">
-	<%= render(:partial => '/landing/footer') %>  
-</div>
-
+    </main>
+  </body>
 </html>
-
-

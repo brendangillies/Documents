@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :companies
   get 'login'	=>	'sessions#new'
   post 'login'	=>	'sessions#create'
   delete 'logout' =>	'sessions#destroy'
@@ -15,6 +14,8 @@ Rails.application.routes.draw do
   resources :approval_docs do
     resources :approval_comments
   end
+
+	resources :items
   
   #resources :projects do
     #resources :master_pos

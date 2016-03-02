@@ -1,0 +1,34 @@
+.row.text-center.row-2
+  .col-md-2.col-side
+    = render partial: 'projects/sidenavigation', locals: {project:  @project}
+  .col-md-8
+    .row.text-center
+      .col-md-9
+        %h2
+          Purchase Order:
+          - @po.po_num
+      .col-md-3
+        %br/
+        %a{:href => "/items/new"} Create New PO
+    %table.table.table-bordered.table-striped.text-center
+      %tr.header
+        %th Line item
+        %th Description
+        %th Documents Required
+        %th Price
+        %th Status
+      - i = 0
+      - @items.each do |s|
+        %tr{:id => s.id}
+          %td= best_in_place s, :line_item_num, url: "items/#{s.id}"
+          %td= best_in_place s, :line_item_desc, url: "items/#{s.id}"
+          %td= best_in_place s, :docs_required, url: "items/#{s.id}"
+          %td= best_in_place s, :price, url: "items/#{s.id}"
+          %td= best_in_place s, :status, url: "items/#{s.id}"
+          %td
+            %a{:href => "/items/show"} Details
+    :javascript
+    $(document).ready(function() {
+      /* Activating Best In Place */
+      jQuery(".best_in_place").best_in_place();
+    });

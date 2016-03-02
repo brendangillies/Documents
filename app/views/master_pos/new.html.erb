@@ -11,12 +11,12 @@
 		<div class="row row-1">
 			<div class ="row text-center">
 				<div class="col-md-3">
-					<%=link_to("<< Back", {:action => 'index', :po_id => @po.po_id})%>
+					<%=link_to("<< Back", {:action => 'index', project_id: @project.id })%>
 				</div>
 				
 				
 				<div class="col-md-6 col-title">
-					<h1>Create new PO for <%=@project.project_name%></h1>
+					<h1>Create new PO for <%=@project.project%></h1>
 				</div>
 				<div class="col-md-3">
 					<br><a href="index">Change Project</a>
@@ -31,12 +31,12 @@
 			<div class="col-md-4">
 			
 			</br></br>
-		    <%= form_for(:master_po, :url => {:action => 'create'}) do |f| %>
+		    <%= form_for(:master_po, :url => {:action => 'create', project_id: @project.id}) do |f| %>
 
 		      <table summary="Subject form fields">
 		        <tr>
-		          <th>PO ID</th>
-		          <td><%= f.text_field(:po_id) %></td>
+		          <th>PO Number</th>
+		          <td><%= f.text_field(:po_num) %></td>
 		        </tr>
 		        <tr>
 		          <th>Company ID</th>

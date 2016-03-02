@@ -1,14 +1,22 @@
 class ProjectsController < ApplicationController
-
   
   def index 
-    @projects = Project.all
+    @projects = current_user.projects
   end
   
   def dashboard
     #change below to tasks = Lineitem.count
-    @project = Project.find(params[:id])
+    @projects = current_user.projects
+		if params.has_key?(:id)
+			current_user.set_current_project(params[:id])
+		end
+		@project = current_project(current_user)
+		if @project.nil?
+			flash[:notice] = "No project set! Please select a current project"
+			render action: "index"
+		end
   end
+
   
   def _sidenavigation
     #change below to tasks = Lineitem.count
@@ -52,6 +60,7 @@ class ProjectsController < ApplicationController
   
  
   def schedule 
+    @project = Project.find(params[:id])
   end
 
   private 
