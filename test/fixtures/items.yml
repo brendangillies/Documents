@@ -7,13 +7,13 @@
 one:
  master_po_id: 1
  line_item_desc: 3" Gizmo
- status_code: 0
+ status: "Approved"
 
 two:
  id: 1
  master_po_id: 1
  line_item_desc: 35" Gizmo
- status_code: 0
+ status: "Pending"
 # column: value
 #
 #  column: value

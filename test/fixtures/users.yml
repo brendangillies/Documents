@@ -10,6 +10,7 @@ bennyB:
   last_name: "Reeves"
   username: "bennyB"
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 brennyG: 
   email: "brendan@vendordocs.com"
@@ -17,10 +18,26 @@ brennyG:
   last_name: "Gillster"
   username: "brennyG"
   password_digest: <%= User.digest('password') %>
+  admin: true
 
-#
-#two: 
-  #email: "user@example.com"
-  #first_name: "Ben"
-  #last_name: "Reeves"
-  #username: "breeves997"
+archer:
+  first_name: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+
+lana:
+  first_name: Lana Kane
+  email: hands@example.gov
+  password_digest: <%= User.digest('password') %>
+
+malory:
+  first_name: Malory Archer
+  email: boss@example.gov
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  first_name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
