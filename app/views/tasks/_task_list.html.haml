@@ -1,0 +1,42 @@
+.row.text-center
+  %h3 Tasks
+  %table.table.table-bordered.table-striped.text-center
+    %tr.header
+      %th Description
+      %th Priority
+      %th Status
+      %th Assigned To
+      %th Task for
+
+    %tbody
+      - assignable.tasks.each do |task|
+        -# the path builder below only works if there is one underscore in the object name. MasterPo --> master_pos
+        - path = "#{task.assignable_type.gsub(/([a-z])(?=[A-Z])/,'\1_\2').downcase.pluralize}/#{assignable.id}/tasks/#{task.id}" 
+        %tr
+          %td= best_in_place task, :description, :url => path
+          %td= best_in_place task, :priority, :url => path
+          %td= best_in_place task, :status, :as => :select, 
+            :collection => {"1" => "Approved", "2" => "Pending", "3" => "Outstanding", "4" => "Review"}, :url => path
+          %td= best_in_place task, :created_by, :url => path
+          %td= task.assignable_type
+          %td= link_to 'delete', 
+            task_path(assignable, assignable_id: assignable.id, assignable_type: assignable.class.name, id: task.id), 
+            remote: true, method: :delete, data: {confirm: 'Are you sure'} 
+
+  %br
+
+  .row
+    .col-md-2.col-md-offset-4
+      = link_to new_task_path(assignable, assignable_id: assignable.id, assignable_type: assignable.class.name), remote: true do
+        %button.btn.btn-default New Task
+
+  .row
+    #task-form{:style => "display:none;"}
+  -#  = render partial: "tasks/form", remote: true,  locals: {assignable: assignable}
+
+  :javascript
+  $(document).ready(function() {
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
+  });
+
